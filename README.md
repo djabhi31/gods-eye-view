@@ -9,7 +9,7 @@ Photorealistic 3D globe with live aircraft transponders, global maritime shippin
 
 [![Live Custom Domain](https://img.shields.io/badge/Live_Deployment-godseyeview.earthsphere.in-00f6ff?style=for-the-badge&logo=azure&logoColor=white)](https://godseyeview.earthsphere.in)
 [![Original Creator](https://img.shields.io/badge/Original_Creator-Bilawal_Sidhu-F0A63C?style=for-the-badge&logo=youtube&logoColor=white)](https://github.com/bilawalsidhu/gods-eye-view)
-[![Enhanced & Maintained](https://img.shields.io/badge/Cloud_Edition-Abhilash_Ghosh-7928CA?style=for-the-badge&logo=github&logoColor=white)](https://github.com/djabhi31)
+[![Cloud Edition](https://img.shields.io/badge/Cloud_Edition-Abhilash_Ghosh-7928CA?style=for-the-badge&logo=github&logoColor=white)](https://github.com/djabhi31)
 
 <br/>
 
@@ -38,7 +38,7 @@ Photorealistic 3D globe with live aircraft transponders, global maritime shippin
 
 > [!IMPORTANT]
 > ### 🌟 Upstream Origin & Attribution Notice
-> **Original Concept & 3D Core**: God's Eye View was conceived, designed, and created by visionary technologist **[Bilawal Sidhu](https://github.com/bilawalsidhu)** and core maintainer **[Sameh Khamis](https://github.com/samehkhamis)** at **[Halfpixel](https://halfpixel.ai)**. All core GLSL shader pipelines, tactical HUD instruments, and live geospatial layer abstractions originate from their canonical repository: **[bilawalsidhu/gods-eye-view](https://github.com/bilawalsidhu/gods-eye-view)**.
+> **Original Concept & 3D Core**: God's Eye View was conceived, authored, and developed by visionary technologist **[Bilawal Sidhu](https://github.com/bilawalsidhu)** and core maintainer **[Sameh Khamis](https://github.com/samehkhamis)** at **[Halfpixel](https://halfpixel.ai)**. All core GLSL shader pipelines, tactical HUD instrumentation, 3D glTF model regimes, and live geospatial layer abstractions originate from their canonical repository: **[bilawalsidhu/gods-eye-view](https://github.com/bilawalsidhu/gods-eye-view)**.
 > 
 > **Cloud Edition Architecture & Engineering**: This repository is the **production-grade, cloud-native distribution** architected, modified, and maintained by **[Abhilash Ghosh (@djabhi31)](https://github.com/djabhi31)**. It transforms God's Eye View from a local-only desktop tool into a scalable, cloud-hosted web application deployed on **Microsoft Azure App Service**, fortified with browser-isolated Bring-Your-Own-Key (BYOK) token storage, an automated lifetime upstream synchronization engine, and deep integration as the 3D twin of the **[EarthSphere](https://github.com/djabhi31/EarthSphere)** intelligence network.
 
@@ -46,15 +46,86 @@ Photorealistic 3D globe with live aircraft transponders, global maritime shippin
 
 <div align="center">
 
-**[⚡ Live Cloud App](https://godseyeview.earthsphere.in)** · **[🚀 Cloud Engineering](#-cloud-edition-engineering--architecture)** · **[🎛️ Tactical Capabilities](#️-what-this-thing-does)** · **[🛰️ Live Layers](#️-whats-on-the-globe)** · **[🌐 Deployment Guide (Free vs Paid)](#-comprehensive-deployment-guide-free-vs-paid)** · **[⚖️ Pros & Cons Comparison](#️-free-vs-paid-hosting-pros--cons)** · **[🔄 Lifetime Sync](#-lifetime-automated-upstream-sync)** · **[👥 Maintainers](#-maintainers--attributions)**
+**[🌍 Why This Exists](#-why-this-exists)** · **[🎛️ What It Does](#️-what-this-thing-does)** · **[🛰️ Live Layers](#️-whats-on-the-globe)** · **[🎙️ Talk to It](#️-talk-to-it)** · **[🚀 Cloud Edition](#-cloud-edition-architecture--enhancements)** · **[🌐 Deployment (Free vs Paid)](#-comprehensive-deployment-guide-free-vs-paid)** · **[⚖️ Comparison & Pros/Cons](#️-free-vs-paid-hosting-deep-comparison)** · **[🔑 BYOK & Keys](#-api-keys--byok-security-model)** · **[🔄 Lifetime Sync](#-lifetime-automated-upstream-sync)** · **[👥 Maintainers](#-maintainers--attributions)**
 
 </div>
 
 ---
 
-## 🚀 Cloud Edition Engineering & Architecture
+## 🌍 Why This Exists
 
-While upstream God's Eye View was built as a local-first desktop application (`127.0.0.1:4173`) running through Vite or Pinokio, **[Abhilash Ghosh](https://github.com/djabhi31)** re-engineered the architecture for modern multi-tenant cloud hosting:
+God's Eye View brings public signals into one explorable globe. Track the world live. Talk to it. Break it. Extend it.
+
+Flight transponders, ship beacons, orbital elements, seismographs, and public cameras already broadcast a tremendous amount of real-time intelligence about our planet. God's Eye View fuses them into a single coherent spatial environment, enabling you to seamlessly transition from a macro planetary overview down to an individual aircraft cockpit, ship deck, or street intersection.
+
+> Half the magic is that it looks like a forbidden cockpit. The other half is that every line of code is inspectable and open source.
+
+Most feeds are live or continuously refreshed from authoritative open telemetry:
+- **Civil & Military Aviation:** Live Mode-S / ADS-B transponder data across global airspace.
+- **Maritime Intelligence:** Real-time AIS transponders charting vessel courses and wake histories.
+- **Orbital Mechanics:** True SGP4 orbital propagation aligned to Greenwich Mean Sidereal Time (GMST).
+- **Public Infrastructure:** Direct projection of real city CCTV view-cones and thermal satellite fire detections.
+
+---
+
+## 🎛️ What This Thing Does
+
+- **🛩️ Cockpit View:** Ride inside a tracked flight — the camera holds the terrain under you all the way down, complete with authentic roll/pitch visor tapes.
+- **📡 Contacts Roster:** A 250 km real-time radar sweep of everything near your target — step through airborne contacts and drop into any cockpit.
+- **🎯 Click-to-Track Anything:** Camera locks on, draws a fading wake trail, surfaces full telemetry metadata, and seamlessly hands you off to the nearest public CCTV camera.
+- **🖊️ Spoken Vector Whiteboard:** Speak annotations onto the world — real boundary polygons, spatial markers, and flight-ready routes.
+- **🛫 3D Hangar:** High-fidelity 3D glTF aircraft models (Boeing 787, ATR-72, Cessna Citation, Bell 206, MQ-9 Reaper) replacing billboard glyphs on close approach.
+- **🎨 GLSL Sensor Optics:** Real-time full-globe post-processing shaders — NVG (Night Vision), Ironbow FLIR Thermal, CRT Phosphor, Noir, Anime, and Snow.
+- **🟩 Detection Overlay:** Screen-space tactical bounding boxes and machine-vision target tags on all assets in view.
+- **🎖️ Military HUD:** Tactical heads-up telemetry display with elevation readouts, compass headers, and situational grids.
+- **🎥 Scene Director:** Capture cinematic orbital camera paths and fly-bys for briefings and intelligence presentations.
+- **🔗 Tactical Share Links:** Serializes camera altitude, coordinates, shader modes, active layers, and targeted assets into an instant URL.
+
+---
+
+## 🛰️ What's on the Globe
+
+Thirteen real-time intelligence feeds and map sources running concurrently:
+
+| Layer | Intelligence Telemetry | Source | Key Requirement |
+|---|---|---|---|
+| 🗺️ **Map Stack** | Photorealistic 3D Tiles, Esri Satellite, OSM, Cesium World Terrain | Google / Esri / Cesium | 🟢 Esri & OSM Keyless · 🟡 Free Ion Token · 🔴 Direct Google |
+| ✈️ **Live Flights** | 11,000+ live commercial aircraft with route traces | OpenSky + adsb.lol | 🟢 Keyless (🟡 optional OpenSky account) |
+| 🎖️ **Military Flights** | ADS-B military airframes highlighted in amber | adsb.lol | 🟢 Keyless |
+| 🚢 **Live Vessels** | Real-time global maritime shipping & AIS transponders | AISStream.io | 🟡 Free AISStream key |
+| 🛰️ **Satellites** | 800+ orbital objects & Starlink constellation via SGP4 | CelesTrak | 🟢 Keyless |
+| 🌍 **Earthquakes** | Global seismic occurrences within the trailing 24 hours | USGS | 🟢 Keyless |
+| 🚗 **Traffic** | Simulated urban flow with live TomTom congestion speeds | TomTom + OSM | 🟢 Keyless simulation (🟡 optional TomTom key) |
+| 📹 **CCTV Mesh** | ~800 public DOT cameras projected directly into 3D cityscapes | NYC / Austin / Caltrans | 🟢 Keyless |
+| 📻 **Radio** | Geolocated world broadcasts with interactive analog tuner | Radio Browser | 🟢 Keyless |
+| 🚲 **Bikeshare** | Live urban micro-mobility station capacities | GBFS | 🟢 Keyless |
+| 🔥 **Active Fires** | Thermal anomalies and active wildfires | NASA FIRMS | 🟡 Free NASA key |
+| 🚀 **Space Missions** | Orbital launches with trajectory replay and staging | Launch Library 2 | 🟢 Keyless |
+| 🏛️ **Infrastructure** | 4,351 datacenters, 704 dams, and 712 submarine cables | Curated Datasets | 🟢 Built-in |
+
+### The Basemap Ladder — What Each Tier Delivers:
+- 🟢 **No Keys (Keyless Baseline):** Esri World Imagery satellite basemap + keyless terrain with automatic OpenStreetMap fallback.
+- 🟡 **Free Cesium Ion Token:** Google Photorealistic 3D Tiles & global world terrain mesh (free for eligible personal use).
+- 🔴 **Metered Google Maps Key:** Direct Google Photorealistic 3D Tiles API + in-app place search.
+
+---
+
+## 🎙️ Talk to It
+
+> Hands-free voice control operates via the **OpenAI Realtime API**. Without a key, all 13 layers and controls remain 100% accessible manually.
+
+Click **GEV MIC** in the command dock, grant microphone access, and command the globe with natural speech:
+
+- **Spatial Context Awareness:** The agent inspects camera altitude, viewport bounding boxes, active layers, and coordinates. Ask: *"What city am I looking at?"* or *"What airport is beneath me?"*
+- **Target Interrogation:** Click any airliner, ship, or datacenter and ask: *"Where is this aircraft heading?"* or *"What is this vessel's draught?"*
+- **Camera Direction:** *"Orbit slowly around the Pentagon"* or *"Dive into Tokyo at street level in night vision mode."*
+- **Spoken Whiteboard:** *"Outline the boundary of Texas"* or *"Draw a route from Central Park to JFK Airport and fly it."*
+
+---
+
+## 🚀 Cloud Edition Architecture & Enhancements
+
+Upstream God's Eye View is designed primarily as a local desktop software (`localhost:4173`). To transform it into a high-availability cloud web console, **[Abhilash Ghosh](https://github.com/djabhi31)** engineered a dedicated cloud-native layer:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────────┐
@@ -83,49 +154,18 @@ Live Aircraft         Maritime Vessels        Orbital Satellites       Thermal A
 ```
 
 ### Key Engineering Modifications in this Edition:
-
-1. **☁️ Production Cloud Server (`server.mjs`)**:
-   - Replaced Vite development server with a standalone, hardened Node.js HTTP/2 production server.
-   - Built-in asset streaming with aggressive client caching, gzip/brotli support, and single-port deployment readiness.
-   - Automated health probe endpoint (`GET /api/health`) returning HTTP 200 JSON telemetry for cloud load balancers.
-
-2. **🔐 Client-Side BYOK (Bring Your Own Key) Engine**:
-   - Upstream stored API keys in server-side `.env` or macOS Keychain, which fails in multi-user public cloud deployments.
-   - Re-engineered key provisioning so visitors input their own keys (`Cesium Ion`, `Google Maps 3D`, `OpenAI Realtime`) directly into browser `localStorage`.
-   - Keys are isolated per-visitor, never committed, never stored on the server disk, and never shared across users.
-
-3. **🔄 Lifetime Automated Upstream Sync Engine**:
-   - Designed `.github/workflows/sync-upstream.yml` and `scripts/sync-upstream.mjs`.
-   - Runs on a daily automated cron schedule to pull new upstream features and bug fixes from Bilawal Sidhu's repo while **safeguarding all cloud files and customizations from being overwritten**.
-
-4. **🛡️ Enterprise Security Hardening**:
-   - 100% clean secret-scanning audit across all git branches and commits (zero leaked credentials).
-   - Reinforced `.gitignore` strictly blocking `.env*`, `.env*.local`, `*.pem`, and `*.key` files.
-
-5. **🌐 Unified EarthSphere Ecosystem Pairing**:
-   - Directly linked as the high-fidelity 3D visualization engine for the [EarthSphere](https://www.earthsphere.in) open-source intelligence suite.
-
----
-
-## 📊 Feature Matrix: Upstream vs. Abhilash's Cloud Edition
-
-| Architectural Dimension | Upstream Original (Bilawal Sidhu) | Abhilash's Cloud Edition |
-| :--- | :--- | :--- |
-| **Originator & Visionary** | **Bilawal Sidhu** (@bilawalsidhu) | **Bilawal Sidhu** (Original Creator) |
-| **Cloud Architecture & Enhancements** | — | **Abhilash Ghosh** (@djabhi31) |
-| **Deployment Target** | Local desktop (`localhost:4173`) | **Cloud Web App (`godseyeview.earthsphere.in`)** |
-| **Production Server** | Vite dev/preview server | **Production `server.mjs` with `/api/health`** |
-| **Multi-User Key Security** | Plaintext `.env` / macOS Keychain | **Browser-Isolated BYOK (`localStorage`)** |
-| **Hosting Compatibility** | Desktop / Pinokio only | **Azure, Render, Railway, Docker, Local** |
-| **CI/CD Automation** | Manual git pulls | **GitHub Actions OIDC Workflow to Azure** |
-| **Upstream Feature Ingestion** | Manual rebase / merge conflicts | **Automated Daily Lifetime Sync Workflow** |
-| **Ecosystem Coupling** | Standalone tool | **Tactical 3D Twin to [EarthSphere](https://earthsphere.in)** |
+1. **Production Web Server (`server.mjs`):** Engineered a lightweight, robust Node.js server with HTTP/2 streaming, SPA route fallbacks, and an automated `/api/health` heartbeat probe.
+2. **Browser-Isolated BYOK (Bring Your Own Key):** Replaced server `.env` key storage with browser `localStorage`. Each visitor provides their own API keys safely without quota leakage or server storage.
+3. **Microsoft Azure App Service Deployment:** Continuous delivery to Linux Node.js 22 LTS with Always-On, custom DNS routing, and automated SSL (`godseyeview.earthsphere.in`).
+4. **Lifetime Automated Upstream Sync:** GitHub Actions workflow (`sync-upstream.yml`) and sync engine (`scripts/sync-upstream.mjs`) ensuring upstream feature parity while preserving all Cloud Edition modifications.
+5. **Zero-Leak Security Hardening:** Rigorous regex secret scans passing 100% clean, backed by a hardened `.gitignore` blocking `.env*`, `.pem`, and `*.key`.
+6. **EarthSphere Geospatial Pairing:** Serves as the 3D tactical twin to [EarthSphere](https://www.earthsphere.in).
 
 ---
 
 ## 🌐 Comprehensive Deployment Guide: Free vs Paid
 
-God's Eye View (Cloud Edition) is engineered to run anywhere Node.js 22+ or Docker is supported. Below are complete, production-tested deployment guides for both **Free** and **Paid** hosting paths.
+God's Eye View (Cloud Edition) is engineered to run seamlessly across both **Free** and **Paid** cloud platforms. Use the guide below to deploy your own instance.
 
 ```
                     ┌────────────────────────────────────────────────────────┐
@@ -147,18 +187,18 @@ God's Eye View (Cloud Edition) is engineered to run anywhere Node.js 22+ or Dock
 
 ### 🟢 Free Deployment Procedures
 
-Free tiers are ideal for students, open-source contributors, personal hobbyists, and quick demonstrations.
+Free tiers are ideal for students, open-source contributors, personal hobbyists, and quick portfolio demonstrations.
 
 #### Option 1: Render.com (Free Web Service) — Best for Public Web Demo
-Render offers a 100% free web service tier with automatic HTTPS and GitHub integration.
+Render offers a 100% free web service tier with automated HTTPS and continuous deployment from GitHub.
 
 1. **Fork or Push**: Ensure this repository is in your GitHub account (`your-username/gods-eye-view`).
 2. **Create Web Service**:
-   - Go to [dashboard.render.com](https://dashboard.render.com/) and click **New +** ➔ **Web Service**.
-   - Select your `gods-eye-view` GitHub repository.
+   - Navigate to [dashboard.render.com](https://dashboard.render.com/) and click **New +** ➔ **Web Service**.
+   - Connect your `gods-eye-view` repository.
 3. **Configure Settings**:
    - **Name**: `gods-eye-view`
-   - **Region**: Choose closest to your target audience (e.g., Singapore, Frankfurt, Oregon).
+   - **Region**: Choose the region closest to your visitors (e.g., Singapore, Frankfurt, Oregon).
    - **Branch**: `main`
    - **Runtime**: `Node`
    - **Build Command**:
@@ -171,18 +211,18 @@ Render offers a 100% free web service tier with automatic HTTPS and GitHub integ
      ```
    - **Instance Type**: Select **Free** (512 MB RAM, 0.1 vCPU).
 4. **Environment Variables**:
-   Add the following under **Environment**:
+   Add the following variables under **Environment**:
    - `PORT`: `4173`
    - `NODE_ENV`: `production`
-5. **Deploy**: Click **Create Web Service**. Within 3–4 minutes, your live URL will be active at `https://<your-app>.onrender.com`.
+5. **Deploy**: Click **Create Web Service**. Your live instance will be accessible at `https://<your-app>.onrender.com` in ~3–4 minutes.
 
 > [!TIP]
-> **Defeating Free Cold Starts**: Free instances on Render spin down after 15 minutes of inactivity. You can set up a free monitor on [UptimeRobot](https://uptimerobot.com/) or [cron-job.org](https://cron-job.org/) to ping `https://<your-app>.onrender.com/api/health` every 10 minutes to keep the instance warm!
+> **Defeating Free Cold Starts**: Free instances on Render spin down after 15 minutes of idle time. You can set up a free monitor on [UptimeRobot](https://uptimerobot.com/) or [cron-job.org](https://cron-job.org/) to ping `https://<your-app>.onrender.com/api/health` every 10 minutes to keep the container awake!
 
 ---
 
 #### Option 2: Localhost & Pinokio Desktop — Best for Maximum 120 FPS GPU Speed
-Running locally costs $0 and grants full access to your local dedicated GPU (Nvidia/AMD/Apple Silicon) without cloud bandwidth limits.
+Running locally costs $0, requires no cloud accounts, and provides native hardware acceleration:
 
 ```bash
 # 1. Clone the repository
@@ -195,7 +235,7 @@ npm install
 # 3. Start local development server
 npm run dev
 
-# Or run the production server locally
+# Or run the production cloud server locally
 npm start
 ```
 Open your browser at **`http://localhost:4173`**.
@@ -203,7 +243,7 @@ Open your browser at **`http://localhost:4173`**.
 ---
 
 #### Option 3: Self-Hosted Docker Container (Homelab / Free VPS)
-Run God's Eye View inside an isolated Docker container on your own server, Raspberry Pi 5, or free Oracle Cloud VM:
+Run God's Eye View inside an isolated Docker container on your own server or free cloud VM:
 
 ```bash
 # Build the production container
@@ -222,7 +262,7 @@ Access at `http://<your-server-ip>:4173`.
 
 ### 🔵 Paid Cloud Deployment Procedures
 
-Paid cloud tiers are designed for high-availability production, zero cold starts, enterprise SLAs, custom domain SSL certificates, and heavy geospatial traffic.
+Paid cloud tiers are designed for 24/7 high availability, zero cold starts, enterprise SLAs, custom domain SSL certificates, and heavy geospatial rendering.
 
 #### Option 1: Microsoft Azure App Service (Current Live Production Setup)
 This is the **exact enterprise infrastructure** powering **[godseyeview.earthsphere.in](https://godseyeview.earthsphere.in)**:
@@ -231,7 +271,7 @@ This is the **exact enterprise infrastructure** powering **[godseyeview.earthsph
 # 1. Login to Azure CLI
 az login
 
-# 2. Create a dedicated Resource Group in your desired region
+# 2. Create a dedicated Resource Group
 az group create --name RG-EarthSphere-Production --location centralindia
 
 # 3. Create a Linux App Service Plan (B1 Basic Tier - ~₹1,100 / $13 per month)
@@ -261,7 +301,7 @@ az webapp config set \
 #### Configuring Custom Domain & SSL on Azure:
 1. **DNS CNAME Record**: In your DNS provider (Cloudflare, GoDaddy, Hostinger), add:
    - `CNAME` ➔ `godseyeview.earthsphere.in` ➔ `godseyeview-erdghedbhdhzabhd.centralindia-01.azurewebsites.net`
-   - `TXT` ➔ `asuid.godseyeview.earthsphere.in` ➔ Verification ID from Azure Portal.
+   - `TXT` ➔ `asuid.godseyeview.earthsphere.in` ➔ Domain Verification ID from Azure Portal.
 2. **Bind Domain in Azure**:
    - Azure Portal ➔ **App Service** ➔ **Custom domains** ➔ **Add custom domain**.
    - Enter `godseyeview.earthsphere.in` ➔ Click **Validate** ➔ **Add**.
@@ -281,7 +321,7 @@ Every push to `main` automatically builds and deploys to Azure with zero downtim
 ---
 
 #### Option 2: DigitalOcean App Platform / Droplet ($6–$12 / month)
-- **App Platform**: Connect repo, set build command to `npm install && npm run build`, run command `node server.mjs`, select $5 Basic droplet.
+- **App Platform**: Connect repo, set build command to `npm install && npm run build`, start command `node server.mjs`, select $5 Basic droplet.
 - **Droplet**: Ubuntu 24.04 LTS, install Node.js 22, run `pm2 start server.mjs --name gev`, configure Nginx reverse proxy with Certbot SSL.
 
 ---
@@ -329,57 +369,7 @@ Every push to `main` automatically builds and deploys to Azure with zero downtim
 
 ---
 
-## 🎛️ What This Thing Does
-
-- **🛩️ Cockpit View:** Ride inside a tracked flight — the camera holds the terrain under you all the way down.
-- **📡 Contacts:** A 250 km roster of everything near your target — step through live aircraft and drop into any cockpit.
-- **🎯 Click-to-Track Anything:** Camera locks on, draws a fading trail, surfaces full metadata — and a tracked fire or vessel hands you off to the nearest live camera in one click.
-- **🖊️ Spoken Whiteboard:** Speak annotations onto the world — real boundary polygons, tactical marks, and flyable routes.
-- **🛫 3D Hangar:** High-detail 3D models for aircraft classes — Boeing 787, ATR-72, Cessna Citation, Bell 206, MQ-9 Reaper.
-- **🎨 GLSL Sensor Optics:** Real-time post-processing shaders over the globe — CRT, NVG (Night Vision), FLIR / Ironbow Thermal, Noir, Anime, and Snow.
-- **🟩 Detection Overlay:** Screen-space bounding boxes and tactical identifiers on targets in view.
-- **🎖️ Military HUD:** Tactical heads-up display with intelligence-style telemetry, pitch/roll indicators, and compass tapes.
-- **🎥 Scene Director:** Capture cinematic camera tours and orbits for briefings and recordings.
-- **🔗 Share Links:** Camera coordinates, visual style, active layers, and tracked targets serialize into a single URL.
-
----
-
-## 🛰️ What's on the Globe
-
-Thirteen real-time intelligence feeds and map sources running concurrently:
-
-| Layer | Intelligence Telemetry | Source | Key Requirement |
-|---|---|---|---|
-| 🗺️ **Map Stack** | Photorealistic 3D Tiles, Esri Satellite, OSM, Cesium World Terrain | Google / Esri / Cesium | 🟢 Esri & OSM Keyless · 🟡 Free Ion Token · 🔴 Direct Google |
-| ✈️ **Live Flights** | 11,000+ live commercial aircraft with route traces | OpenSky + adsb.lol | 🟢 Keyless (🟡 optional OpenSky account) |
-| 🎖️ **Military Flights** | ADS-B military airframes highlighted in amber | adsb.lol | 🟢 Keyless |
-| 🚢 **Live Vessels** | Real-time global maritime shipping & AIS transponders | AISStream.io | 🟡 Free AISStream key |
-| 🛰️ **Satellites** | 800+ orbital objects & Starlink constellation via SGP4 | CelesTrak | 🟢 Keyless |
-| 🌍 **Earthquakes** | Global seismic occurrences within the trailing 24 hours | USGS | 🟢 Keyless |
-| 🚗 **Traffic** | Simulated urban flow with live TomTom congestion speeds | TomTom + OSM | 🟢 Keyless simulation (🟡 optional TomTom key) |
-| 📹 **CCTV Mesh** | ~800 public DOT cameras projected directly into 3D cityscapes | NYC / Austin / Caltrans | 🟢 Keyless |
-| 📻 **Radio** | Geolocated world broadcasts with interactive analog tuner | Radio Browser | 🟢 Keyless |
-| 🚲 **Bikeshare** | Live urban micro-mobility station capacities | GBFS | 🟢 Keyless |
-| 🔥 **Active Fires** | Thermal anomalies and active wildfires | NASA FIRMS | 🟡 Free NASA key |
-| 🚀 **Space Missions** | Orbital launches with trajectory replay and staging | Launch Library 2 | 🟢 Keyless |
-| 🏛️ **Infrastructure** | 4,351 datacenters, 704 dams, and 712 submarine cables | Curated Datasets | 🟢 Built-in |
-
----
-
-## 🎙️ Talk to It
-
-> Voice control requires an **OpenAI API Key**. Without one, the entire globe and all 13 layers operate with full manual interaction.
-
-Click **GEV MIC** in the bottom dock, grant microphone permissions, and converse naturally:
-
-- **Scene Awareness:** The AI agent analyzes your live viewport coordinates, camera elevation, and active layers. Ask *"What city am I looking at?"* or *"What airport is below me?"*
-- **Target Interrogation:** Click any plane or ship and ask *"What is this flight's destination?"* or *"How fast is this ship cruising?"*
-- **Cinematic Commands:** *"Orbit around the Colosseum slowly"* or *"Take me to Tokyo in night vision."*
-- **Vector Annotation:** *"Outline the state of California"* or *"Draw a route from Times Square to Central Park and fly it."*
-
----
-
-## 🔑 API Keys & BYOK Model
+## 🔑 API Keys & BYOK Security Model
 
 All basic layers function **100% free and without keys**. Upgrades can be added anytime:
 
@@ -392,7 +382,7 @@ All basic layers function **100% free and without keys**. Upgrades can be added 
 | **NASA FIRMS Key** | Global active fire satellite alerts | 🟡 Free tier | [firms.modaps.eosdis.nasa.gov](https://firms.modaps.eosdis.nasa.gov/api/map_key/) |
 | **TomTom Key** | Real-time traffic congestion speeds | 🟡 Free tier | [developer.tomtom.com](https://developer.tomtom.com/) |
 
-### Browser-Level BYOK
+### Browser-Level BYOK Architecture
 When using the live deployment at `godseyeview.earthsphere.in`, click the **POWER UP** chip in the lower-right corner. Keys entered here are saved exclusively into your browser's private `localStorage` and sent only to the respective provider's endpoints. Keys are never saved to server disk or exposed to other visitors.
 
 ---
