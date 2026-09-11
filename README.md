@@ -15,6 +15,8 @@ Photorealistic 3D globe with live aircraft transponders, global maritime shippin
 
 [![Azure App Service](https://img.shields.io/badge/Azure_App_Service-Linux_Node.js_22-0078D4?style=flat-square&logo=microsoftazure&logoColor=white)](https://godseyeview-erdghedbhdhzabhd.centralindia-01.azurewebsites.net)
 [![Ecosystem](https://img.shields.io/badge/Ecosystem-EarthSphere_Suite-00DF89?style=flat-square&logo=planetscale&logoColor=white)](https://www.earthsphere.in)
+[![GitHub Release](https://img.shields.io/badge/Release-v0.2.0--cloud-38bdf8?style=flat-square&logo=github&logoColor=white)](https://github.com/djabhi31/gods-eye-view/releases)
+[![Contributors](https://img.shields.io/badge/Contributors-Active-a855f7?style=flat-square&logo=github&logoColor=white)](https://github.com/djabhi31/gods-eye-view/graphs/contributors)
 [![Automated Lifetime Sync](https://img.shields.io/badge/Lifetime_Sync-Active_&_Automated-brightgreen?style=flat-square&logo=githubactions&logoColor=white)](.github/workflows/sync-upstream.yml)
 [![Security Audit](https://img.shields.io/badge/Security_Audit-0_Leaks_(Passed)-success?style=flat-square&logo=shield&logoColor=white)](SECURITY.md)
 [![Upstream Trending](https://img.shields.io/badge/%231_GitHub_Trending-August_2026-F0A63C?style=flat-square&logo=github)](https://github.com/bilawalsidhu/gods-eye-view)
@@ -430,6 +432,23 @@ This project represents the convergence of open-source innovation and cloud arch
 | **Original Creator & Visionary** | **[Bilawal Sidhu](https://github.com/bilawalsidhu)** | Original concept, shaders, UI design, 3D engine, and viral series |
 | **Core Maintainer (Upstream)** | **[Sameh Khamis](https://github.com/samehkhamis)** | Core stability, architecture, and optimizations at Halfpixel |
 | **Cloud Edition Maintainer & Architect** | **[Abhilash Ghosh](https://github.com/djabhi31)** | Cloud architecture, Azure deployment, `server.mjs`, BYOK engine, lifetime sync engine, security audits, and EarthSphere integration |
+
+### 🤝 Project Contributors
+
+A massive salute to everyone contributing code, telemetry layers, shader math, and bug fixes:
+
+<div align="center">
+
+<a href="https://github.com/djabhi31/gods-eye-view/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=djabhi31/gods-eye-view" alt="Contributors Grid" />
+</a>
+
+<br/><br/>
+
+[![Contributors Graph](https://img.shields.io/badge/View_Full_Contributor_Graph-purple?style=for-the-badge&logo=github)](https://github.com/djabhi31/gods-eye-view/graphs/contributors)
+[![Official Releases](https://img.shields.io/badge/Browse_Official_Releases-blue?style=for-the-badge&logo=tag)](https://github.com/djabhi31/gods-eye-view/releases)
+
+</div>
 
 ---
 
