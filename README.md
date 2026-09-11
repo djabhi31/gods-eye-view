@@ -1,21 +1,22 @@
 <div align="center">
 
 # 🌐 God's Eye View
-### Cloud-Native 3D Intelligence Console & Spy-Satellite Simulator
+### Cloud-Native 3D Intelligence Console & Geospatial Observation Matrix
 
-Photorealistic 3D globe with live aircraft, maritime vessels, orbital satellites, seismic activity, public CCTV meshes, and hands-free voice control powered by a realtime AI agent.
+Photorealistic 3D globe with live aircraft transponders, global maritime shipping, orbital satellite tracking, seismic telemetry, public camera meshes, and hands-free voice control powered by a realtime AI agent.
 
 *No place left behind.*
 
-[![Live Cloud Instance](https://img.shields.io/badge/Live_Deployment-godseyeview.earthsphere.in-00f6ff?style=for-the-badge&logo=azure&logoColor=white)](https://godseyeview.earthsphere.in)
+[![Live Custom Domain](https://img.shields.io/badge/Live_Deployment-godseyeview.earthsphere.in-00f6ff?style=for-the-badge&logo=azure&logoColor=white)](https://godseyeview.earthsphere.in)
 [![Original Creator](https://img.shields.io/badge/Original_Creator-Bilawal_Sidhu-F0A63C?style=for-the-badge&logo=youtube&logoColor=white)](https://github.com/bilawalsidhu/gods-eye-view)
-[![Enhanced & Maintained](https://img.shields.io/badge/Enhanced_&_Maintained-Abhilash_Ghosh-7928CA?style=for-the-badge&logo=github&logoColor=white)](https://github.com/djabhi31)
+[![Enhanced & Maintained](https://img.shields.io/badge/Cloud_Edition-Abhilash_Ghosh-7928CA?style=for-the-badge&logo=github&logoColor=white)](https://github.com/djabhi31)
 
 <br/>
 
 [![Azure App Service](https://img.shields.io/badge/Azure_App_Service-Linux_Node.js_22-0078D4?style=flat-square&logo=microsoftazure&logoColor=white)](https://godseyeview-erdghedbhdhzabhd.centralindia-01.azurewebsites.net)
 [![Ecosystem](https://img.shields.io/badge/Ecosystem-EarthSphere_Suite-00DF89?style=flat-square&logo=planetscale&logoColor=white)](https://www.earthsphere.in)
-[![Security Audit](https://img.shields.io/badge/Security_Audit-Passed_(0_Leaks)-brightgreen?style=flat-square&logo=shield&logoColor=white)](SECURITY.md)
+[![Automated Lifetime Sync](https://img.shields.io/badge/Lifetime_Sync-Active_&_Automated-brightgreen?style=flat-square&logo=githubactions&logoColor=white)](.github/workflows/sync-upstream.yml)
+[![Security Audit](https://img.shields.io/badge/Security_Audit-0_Leaks_(Passed)-success?style=flat-square&logo=shield&logoColor=white)](SECURITY.md)
 [![Upstream Trending](https://img.shields.io/badge/%231_GitHub_Trending-August_2026-F0A63C?style=flat-square&logo=github)](https://github.com/bilawalsidhu/gods-eye-view)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
 
@@ -36,98 +37,295 @@ Photorealistic 3D globe with live aircraft, maritime vessels, orbital satellites
 ---
 
 > [!IMPORTANT]
-> ### 🌟 Upstream Origin & Attribution
-> **Original Concept & Architecture**: God's Eye View was conceived and authored by visionary technologist **[Bilawal Sidhu](https://github.com/bilawalsidhu)** and maintainer **[Sameh Khamis](https://github.com/samehkhamis)** at **[Halfpixel](https://halfpixel.ai)**. All core shader mechanics, tactical HUD models, and data layer abstractions remain under the stewardship of the original project. Upstream repository: **[bilawalsidhu/gods-eye-view](https://github.com/bilawalsidhu/gods-eye-view)**.
+> ### 🌟 Upstream Origin & Attribution Notice
+> **Original Concept & 3D Core**: God's Eye View was conceived, designed, and created by visionary technologist **[Bilawal Sidhu](https://github.com/bilawalsidhu)** and core maintainer **[Sameh Khamis](https://github.com/samehkhamis)** at **[Halfpixel](https://halfpixel.ai)**. All core GLSL shader pipelines, tactical HUD instruments, and live geospatial layer abstractions originate from their canonical repository: **[bilawalsidhu/gods-eye-view](https://github.com/bilawalsidhu/gods-eye-view)**.
 > 
-> **Enhanced Cloud Edition & Engineering**: This repository is the **production-grade, cloud-hosted edition** architected, modified, and maintained by **[Abhilash Ghosh (@djabhi31)](https://github.com/djabhi31)**. It introduces an enterprise Node.js runtime server (`server.mjs`), Microsoft Azure App Service deployment, client-side BYOK (Bring Your Own Key) credential isolation, custom domain SSL integration (`godseyeview.earthsphere.in`), automated CI/CD workflows, and seamless pairing with the **[EarthSphere](https://github.com/djabhi31/EarthSphere)** geospatial platform.
+> **Cloud Edition Architecture & Engineering**: This repository is the **production-grade, cloud-native distribution** architected, modified, and maintained by **[Abhilash Ghosh (@djabhi31)](https://github.com/djabhi31)**. It transforms God's Eye View from a local-only desktop tool into a scalable, cloud-hosted web application deployed on **Microsoft Azure App Service**, fortified with browser-isolated Bring-Your-Own-Key (BYOK) token storage, an automated lifetime upstream synchronization engine, and deep integration as the 3D twin of the **[EarthSphere](https://github.com/djabhi31/EarthSphere)** intelligence network.
 
 ---
 
 <div align="center">
 
-**[⚡ Live Cloud App](https://godseyeview.earthsphere.in)** · **[🚀 Abhilash's Cloud Enhancements](#-abhilashs-enhanced-cloud-edition)** · **[🎛️ Tactical Capabilities](#️-what-this-thing-does)** · **[🛰️ Live Layers](#️-whats-on-the-globe)** · **[🎙️ Voice Agent](#️-talk-to-it)** · **[🔑 BYOK & Keys](#-api-keys--byok-model)** · **[👥 Maintainers & Credits](#-maintainers--attributions)**
+**[⚡ Live Cloud App](https://godseyeview.earthsphere.in)** · **[🚀 Cloud Engineering](#-cloud-edition-engineering--architecture)** · **[🎛️ Tactical Capabilities](#️-what-this-thing-does)** · **[🛰️ Live Layers](#️-whats-on-the-globe)** · **[🌐 Deployment Guide (Free vs Paid)](#-comprehensive-deployment-guide-free-vs-paid)** · **[⚖️ Pros & Cons Comparison](#️-free-vs-paid-hosting-pros--cons)** · **[🔄 Lifetime Sync](#-lifetime-automated-upstream-sync)** · **[👥 Maintainers](#-maintainers--attributions)**
 
 </div>
 
 ---
 
-## 🚀 Abhilash's Enhanced Cloud Edition
+## 🚀 Cloud Edition Engineering & Architecture
 
-The upstream release of God's Eye View was designed as a local-first desktop application bound to `localhost:4173` via Vite or the Pinokio desktop launcher.
-
-To make God's Eye View instantly accessible worldwide without requiring users to download gigabytes of dependencies or launch terminal commands, **[Abhilash Ghosh](https://github.com/djabhi31)** re-engineered the application for cloud-native deployment:
+While upstream God's Eye View was built as a local-first desktop application (`127.0.0.1:4173`) running through Vite or Pinokio, **[Abhilash Ghosh](https://github.com/djabhi31)** re-engineered the architecture for modern multi-tenant cloud hosting:
 
 ```
-                  ┌─────────────────────────────────────────────────────────────┐
-                  │                 USER BROWSER / CLIENT                      │
-                  │   • Photorealistic 3D Cesium Engine (Google Tiles)          │
-                  │   • Client-Isolated BYOK (localStorage Token Storage)       │
-                  │   • WebGL Shaders (NVG / FLIR / CRT / Thermal)              │
-                  └──────────────┬───────────────────────────────▲──────────────┘
-                                 │ HTTPS                         │ Static Assets
-                                 │                               │ & API Proxies
-                  ┌──────────────▼───────────────────────────────┴──────────────┐
-                  │          MICROSOFT AZURE APP SERVICE (B1 Linux)             │
-                  │              godseyeview.earthsphere.in                     │
-                  │                                                             │
-                  │  ┌───────────────────────────────────────────────────────┐  │
-                  │  │           Production Server (server.mjs)              │  │
-                  │  │  • HTTP/1.1 & HTTP/2 Asset Streaming                  │  │
-                  │  │  • Liveness / Readiness Probes (/api/health)          │  │
-                  │  │  • Hardened API Proxy Routing & SSRF Boundaries       │  │
-                  │  │  • Graceful Shutdown & Process Isolation              │  │
-                  │  └───────────────────────────────────────────────────────┘  │
-                  └──────────────────────────────┬──────────────────────────────┘
-                                                 │
-                   ┌─────────────────────────────┼────────────────────────────┐
-                   ▼                             ▼                            ▼
-            [OpenSky ADS-B]               [AISStream AIS]              [NASA FIRMS]
-            Live Aircraft                  Live Ships                   Active Fires
+┌─────────────────────────────────────────────────────────────────────────────────────────┐
+│                                   CLIENT BROWSER                                        │
+│  • Photorealistic 3D Cesium Engine (Google 3D Tiles)                                    │
+│  • Browser-Isolated BYOK Storage (localStorage: Cesium, Google, OpenAI)                 │
+│  • GLSL Post-Processing Pipeline (Night Vision / Ironbow FLIR / Thermal / CRT / Noir)   │
+└────────────────────────────┬───────────────────────────────────────▲────────────────────┘
+                             │ HTTPS                                 │ Static Assets &
+                             │                                       │ Secure Proxies
+┌────────────────────────────▼───────────────────────────────────────┴────────────────────┐
+│                       CLOUD HOSTING TIER (PAID OR FREE)                                 │
+│                                                                                         │
+│  [ Production Server: server.mjs ]                                                      │
+│  • High-throughput HTTP/2 asset streaming with MIME classification                     │
+│  • Single Page Application (SPA) HTML5 history routing fallback                         │
+│  • Health & readiness probe (/api/health) for continuous monitoring                     │
+│  • Hardened API proxies with SSRF boundaries & rate-governing                           │
+│  • Zero-secret server architecture (no client tokens saved to disk)                     │
+└────────────────────────────┬────────────────────────────────────────────────────────────┘
+                             │
+     ┌───────────────────────┼───────────────────────┬────────────────────────┐
+     ▼                       ▼                       ▼                        ▼
+[OpenSky ADS-B]       [AISStream AIS]         [CelesTrak TLE]          [NASA FIRMS]
+Live Aircraft         Maritime Vessels        Orbital Satellites       Thermal Anomaly
 ```
 
-### Key Enhancements Introduced in this Fork:
+### Key Engineering Modifications in this Edition:
 
-1. **☁️ Microsoft Azure Cloud Deployment**:
-   - Deployed on **Azure App Service (Linux Node.js 22 LTS)** located in the Central India region (`godseyeview-erdghedbhdhzabhd.centralindia-01.azurewebsites.net`).
-   - Configured custom DNS routing and automated SSL binding for **[godseyeview.earthsphere.in](https://godseyeview.earthsphere.in)**.
-   - Always-On daemon configuration ensuring zero cold-start latency for web visitors.
+1. **☁️ Production Cloud Server (`server.mjs`)**:
+   - Replaced Vite development server with a standalone, hardened Node.js HTTP/2 production server.
+   - Built-in asset streaming with aggressive client caching, gzip/brotli support, and single-port deployment readiness.
+   - Automated health probe endpoint (`GET /api/health`) returning HTTP 200 JSON telemetry for cloud load balancers.
 
-2. **🔐 Client-Side BYOK (Bring Your Own Key) Security Architecture**:
-   - Replaced server-bound `.env` key storage with browser-level `localStorage` isolation (`gev_google_maps_key`, `gev_cesium_token`, `gev_openai_key`).
-   - Solved the public cloud multi-user problem: visitors can input their own API keys directly in the browser to unlock Google 3D photorealistic tiles or OpenAI Realtime voice without their keys ever reaching server storage or leaking across users.
+2. **🔐 Client-Side BYOK (Bring Your Own Key) Engine**:
+   - Upstream stored API keys in server-side `.env` or macOS Keychain, which fails in multi-user public cloud deployments.
+   - Re-engineered key provisioning so visitors input their own keys (`Cesium Ion`, `Google Maps 3D`, `OpenAI Realtime`) directly into browser `localStorage`.
+   - Keys are isolated per-visitor, never committed, never stored on the server disk, and never shared across users.
 
-3. **🖥️ Production Cloud Server (`server.mjs`)**:
-   - Created a dedicated, standalone Node.js production server with MIME-type asset streaming, Single Page Application (SPA) fallback, and API gateway routing.
-   - Implemented an automated health check endpoint (`GET /api/health`) for Azure liveness and readiness monitoring.
-   - Built robust signal handling (`SIGTERM`, `SIGINT`) and crash guards.
+3. **🔄 Lifetime Automated Upstream Sync Engine**:
+   - Designed `.github/workflows/sync-upstream.yml` and `scripts/sync-upstream.mjs`.
+   - Runs on a daily automated cron schedule to pull new upstream features and bug fixes from Bilawal Sidhu's repo while **safeguarding all cloud files and customizations from being overwritten**.
 
-4. **🔄 Continuous Delivery (CI/CD)**:
-   - Configured a production GitHub Actions workflow (`.github/workflows/main_godseyeview.yml`) utilizing Azure OpenID Connect (OIDC) federated credentials.
-   - Enables zero-downtime automated builds and deployments on every push to `main`.
+4. **🛡️ Enterprise Security Hardening**:
+   - 100% clean secret-scanning audit across all git branches and commits (zero leaked credentials).
+   - Reinforced `.gitignore` strictly blocking `.env*`, `.env*.local`, `*.pem`, and `*.key` files.
 
-5. **🛡️ Comprehensive Security Hardening & Zero-Leak Audit**:
-   - Performed complete regex pattern audits for Google, OpenAI, AWS, and GitHub tokens across all tracked files and historical commits (0 leaks detected).
-   - Hardened `.gitignore` to strictly ignore all `.env*`, `.env*.local`, `*.pem`, and `*.key` files.
-
-6. **🌐 Dual-Suite EarthSphere Ecosystem Integration**:
-   - Coupled God's Eye View as the 3D tactical simulator alongside **[EarthSphere](https://www.earthsphere.in)** (the 2D global intelligence and NASA EONET platform), enabling dual-screen operations.
+5. **🌐 Unified EarthSphere Ecosystem Pairing**:
+   - Directly linked as the high-fidelity 3D visualization engine for the [EarthSphere](https://www.earthsphere.in) open-source intelligence suite.
 
 ---
 
-## 📊 Comparison Matrix: Upstream vs. Abhilash's Cloud Edition
+## 📊 Feature Matrix: Upstream vs. Abhilash's Cloud Edition
 
-| Feature / Dimension | Original God's Eye View (Upstream) | Abhilash's Enhanced Cloud Edition |
+| Architectural Dimension | Upstream Original (Bilawal Sidhu) | Abhilash's Cloud Edition |
 | :--- | :--- | :--- |
-| **Originator & Creator** | **Bilawal Sidhu** (@bilawalsidhu) | **Bilawal Sidhu** (Original Creator) |
-| **Cloud Engineering & Modifications** | — | **Abhilash Ghosh** (@djabhi31) |
-| **Runtime Architecture** | Localhost desktop app (`127.0.0.1:4173`) | **Cloud-hosted Web Application** |
-| **Cloud Infrastructure** | None (Local Vite dev server / Pinokio) | **Microsoft Azure App Service** (Linux B1) |
-| **Custom Domain & SSL** | None | **`https://godseyeview.earthsphere.in`** |
-| **Key Provisioning** | Local `.env` / macOS Keychain | **Browser-Isolated BYOK (localStorage)** |
-| **Production Server** | Vite preview / Dev server | **Production `server.mjs` with Health Probes** |
+| **Originator & Visionary** | **Bilawal Sidhu** (@bilawalsidhu) | **Bilawal Sidhu** (Original Creator) |
+| **Cloud Architecture & Enhancements** | — | **Abhilash Ghosh** (@djabhi31) |
+| **Deployment Target** | Local desktop (`localhost:4173`) | **Cloud Web App (`godseyeview.earthsphere.in`)** |
+| **Production Server** | Vite dev/preview server | **Production `server.mjs` with `/api/health`** |
+| **Multi-User Key Security** | Plaintext `.env` / macOS Keychain | **Browser-Isolated BYOK (`localStorage`)** |
+| **Hosting Compatibility** | Desktop / Pinokio only | **Azure, Render, Railway, Docker, Local** |
 | **CI/CD Automation** | Manual git pulls | **GitHub Actions OIDC Workflow to Azure** |
+| **Upstream Feature Ingestion** | Manual rebase / merge conflicts | **Automated Daily Lifetime Sync Workflow** |
 | **Ecosystem Coupling** | Standalone tool | **Tactical 3D Twin to [EarthSphere](https://earthsphere.in)** |
-| **Security Audit** | Standard | **Audited 0-Leak & Hardened `.gitignore`** |
+
+---
+
+## 🌐 Comprehensive Deployment Guide: Free vs Paid
+
+God's Eye View (Cloud Edition) is engineered to run anywhere Node.js 22+ or Docker is supported. Below are complete, production-tested deployment guides for both **Free** and **Paid** hosting paths.
+
+```
+                    ┌────────────────────────────────────────────────────────┐
+                    │               WHICH PATH SHOULD YOU CHOOSE?            │
+                    └───────────────────┬────────────────┬───────────────────┘
+                                        │                │
+                        ┌───────────────▼─┐            ┌─▼───────────────┐
+                        │    FREE PATH    │            │    PAID PATH    │
+                        └───────┬─────────┘            └─┬───────────────┘
+                                │                        │
+               ┌────────────────┼────────────────┐       │
+               ▼                ▼                ▼       ▼
+        [ Render Free ]  [ Local / Pinokio ] [ Docker ] [ Azure App Service B1 ]
+         Quick public      Zero-cost max GPU   Self-host  Always-On, 0 Cold Start
+         hobby demo        desktop speed       homelab    Custom Domain + SLA
+```
+
+---
+
+### 🟢 Free Deployment Procedures
+
+Free tiers are ideal for students, open-source contributors, personal hobbyists, and quick demonstrations.
+
+#### Option 1: Render.com (Free Web Service) — Best for Public Web Demo
+Render offers a 100% free web service tier with automatic HTTPS and GitHub integration.
+
+1. **Fork or Push**: Ensure this repository is in your GitHub account (`your-username/gods-eye-view`).
+2. **Create Web Service**:
+   - Go to [dashboard.render.com](https://dashboard.render.com/) and click **New +** ➔ **Web Service**.
+   - Select your `gods-eye-view` GitHub repository.
+3. **Configure Settings**:
+   - **Name**: `gods-eye-view`
+   - **Region**: Choose closest to your target audience (e.g., Singapore, Frankfurt, Oregon).
+   - **Branch**: `main`
+   - **Runtime**: `Node`
+   - **Build Command**:
+     ```bash
+     npm install && npm run build
+     ```
+   - **Start Command**:
+     ```bash
+     node server.mjs
+     ```
+   - **Instance Type**: Select **Free** (512 MB RAM, 0.1 vCPU).
+4. **Environment Variables**:
+   Add the following under **Environment**:
+   - `PORT`: `4173`
+   - `NODE_ENV`: `production`
+5. **Deploy**: Click **Create Web Service**. Within 3–4 minutes, your live URL will be active at `https://<your-app>.onrender.com`.
+
+> [!TIP]
+> **Defeating Free Cold Starts**: Free instances on Render spin down after 15 minutes of inactivity. You can set up a free monitor on [UptimeRobot](https://uptimerobot.com/) or [cron-job.org](https://cron-job.org/) to ping `https://<your-app>.onrender.com/api/health` every 10 minutes to keep the instance warm!
+
+---
+
+#### Option 2: Localhost & Pinokio Desktop — Best for Maximum 120 FPS GPU Speed
+Running locally costs $0 and grants full access to your local dedicated GPU (Nvidia/AMD/Apple Silicon) without cloud bandwidth limits.
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/djabhi31/gods-eye-view.git
+cd gods-eye-view
+
+# 2. Install dependencies (Node.js 22 LTS or Node 24 recommended)
+npm install
+
+# 3. Start local development server
+npm run dev
+
+# Or run the production server locally
+npm start
+```
+Open your browser at **`http://localhost:4173`**.
+
+---
+
+#### Option 3: Self-Hosted Docker Container (Homelab / Free VPS)
+Run God's Eye View inside an isolated Docker container on your own server, Raspberry Pi 5, or free Oracle Cloud VM:
+
+```bash
+# Build the production container
+docker build -t gods-eye-view:latest .
+
+# Run with single-port binding
+docker run -d \
+  --name gods-eye-view \
+  -p 4173:4173 \
+  --restart unless-stopped \
+  gods-eye-view:latest
+```
+Access at `http://<your-server-ip>:4173`.
+
+---
+
+### 🔵 Paid Cloud Deployment Procedures
+
+Paid cloud tiers are designed for high-availability production, zero cold starts, enterprise SLAs, custom domain SSL certificates, and heavy geospatial traffic.
+
+#### Option 1: Microsoft Azure App Service (Current Live Production Setup)
+This is the **exact enterprise infrastructure** powering **[godseyeview.earthsphere.in](https://godseyeview.earthsphere.in)**:
+
+```bash
+# 1. Login to Azure CLI
+az login
+
+# 2. Create a dedicated Resource Group in your desired region
+az group create --name RG-EarthSphere-Production --location centralindia
+
+# 3. Create a Linux App Service Plan (B1 Basic Tier - ~₹1,100 / $13 per month)
+az appservice plan create \
+  --name Plan-GodsEyeView-B1 \
+  --resource-group RG-EarthSphere-Production \
+  --location centralindia \
+  --is-linux \
+  --sku B1
+
+# 4. Create the Web App with Node.js 22 LTS
+az webapp create \
+  --name godseyeview \
+  --resource-group RG-EarthSphere-Production \
+  --plan Plan-GodsEyeView-B1 \
+  --runtime "NODE:22-lts" \
+  --startup-file "node server.mjs"
+
+# 5. Enable Always-On and HTTP 2.0 (Eliminates cold starts completely)
+az webapp config set \
+  --name godseyeview \
+  --resource-group RG-EarthSphere-Production \
+  --always-on true \
+  --http20-enabled true
+```
+
+#### Configuring Custom Domain & SSL on Azure:
+1. **DNS CNAME Record**: In your DNS provider (Cloudflare, GoDaddy, Hostinger), add:
+   - `CNAME` ➔ `godseyeview.earthsphere.in` ➔ `godseyeview-erdghedbhdhzabhd.centralindia-01.azurewebsites.net`
+   - `TXT` ➔ `asuid.godseyeview.earthsphere.in` ➔ Verification ID from Azure Portal.
+2. **Bind Domain in Azure**:
+   - Azure Portal ➔ **App Service** ➔ **Custom domains** ➔ **Add custom domain**.
+   - Enter `godseyeview.earthsphere.in` ➔ Click **Validate** ➔ **Add**.
+3. **Automated Free Managed Certificate**:
+   - In **Custom domains**, click **Add binding** ➔ Select **App Service Managed Certificate**.
+   - Azure automatically provisions and auto-renews an SNI SSL certificate at zero additional cost!
+
+#### Automated GitHub Actions CI/CD Deployment:
+This repository includes a production workflow (`.github/workflows/main_godseyeview.yml`).
+Add the following secrets to your GitHub repository under **Settings** ➔ **Secrets and variables** ➔ **Actions**:
+- `AZUREAPPSERVICE_CLIENTID_*`
+- `AZUREAPPSERVICE_TENANTID_*`
+- `AZUREAPPSERVICE_SUBSCRIPTIONID_*`
+
+Every push to `main` automatically builds and deploys to Azure with zero downtime!
+
+---
+
+#### Option 2: DigitalOcean App Platform / Droplet ($6–$12 / month)
+- **App Platform**: Connect repo, set build command to `npm install && npm run build`, run command `node server.mjs`, select $5 Basic droplet.
+- **Droplet**: Ubuntu 24.04 LTS, install Node.js 22, run `pm2 start server.mjs --name gev`, configure Nginx reverse proxy with Certbot SSL.
+
+---
+
+## ⚖️ Free vs Paid Hosting: Deep Comparison
+
+| Feature / Dimension | 🟢 Free Tier (Render / Local) | 🔵 Paid Cloud (Azure B1 / DigitalOcean) |
+| :--- | :--- | :--- |
+| **Monthly Cost** | **$0.00 / month** | **~$7.00 to ~$13.00 / month** |
+| **Cold Starts** | ⚠️ **Yes (50–60s delay)** after 15m idle on Render | ⚡ **Zero Cold Starts (Always-On active 24/7)** |
+| **Memory Allocation (RAM)** | 512 MB (Strict limit, risk of OOM on heavy 3D tiles) | **1.75 GB – 2 GB dedicated RAM** |
+| **CPU Performance** | Shared 0.1 vCPU (burstable) | **1.0 Dedicated vCPU (consistent rendering)** |
+| **Uptime & Reliability** | ~99.0% (No SLA, subject to idle shutdown) | **99.95% Enterprise SLA** |
+| **Custom Domain SSL** | Basic SSL; manual DNS setup | **Native SNI SSL with automated auto-renewal** |
+| **AISStream WebSocket** | May drop connection when host sleeps | **Stable, persistent WebSocket connections** |
+| **High Traffic Handling** | Rate-limited / throttled | **Smooth concurrency with HTTP/2 multiplexing** |
+| **Health Monitoring** | Basic console logs | **Application Insights, CPU/RAM alerts & probes** |
+| **Ideal For** | Personal portfolios, testing, hobby exploration | **Live public applications, client demos, 24/7 ops** |
+
+---
+
+### 📋 Detailed Pros & Cons Breakdown
+
+#### 🟢 Free Hosting (Render / Railway / Free VPS)
+* **Pros:**
+  * ✅ **Zero Financial Commitment**: Perfect for students, open-source learners, or proof-of-concept tests.
+  * ✅ **Automatic HTTPS**: Render and cloud free tiers provide instant SSL on subdomains.
+  * ✅ **Easy Setup**: Minimal configuration required to see the globe online.
+* **Cons:**
+  * ❌ **Cold Starts**: When visitors click your link after 15 minutes of inactivity, they wait 50+ seconds for the server container to wake up.
+  * ❌ **Memory Constraints**: CesiumJS photorealistic 3D tile proxying and spatial GeoJSON parsing (datacenters, dams, submarine cables) can approach 400MB+ RAM. On a 512MB free container, heavy queries risk Out-Of-Memory (OOM) crashes.
+  * ❌ **WebSocket Disconnections**: Live AIS maritime ship streams require long-lived WebSockets; sleeping containers terminate live feeds.
+
+---
+
+#### 🔵 Paid Hosting (Microsoft Azure App Service B1)
+* **Pros:**
+  * 🚀 **Instant Load Speed**: Always-On daemon keeps Node.js warm 24/7/365. Zero startup lag.
+  * 🛡️ **Ample Headroom (1.75 GB RAM)**: Effortlessly buffers Google Photorealistic 3D tiles, OpenSky radar matrices, and high-density Starlink satellite orbits without choking.
+  * 🌐 **Branded Custom Domain**: Seamless CNAME mapping (`godseyeview.earthsphere.in`) with automated zero-touch SSL certificate renewals.
+  * 🔄 **Enterprise CI/CD**: Native OpenID Connect (OIDC) authentication in GitHub Actions pushes updates securely without hardcoded credentials.
+* **Cons:**
+  * 💸 **Recurring Cost**: Requires ~$13 / month (or Microsoft Azure for Students / Azure Sponsorship credits).
+  * ⚙️ **Initial Cloud Configuration**: Requires configuring Azure Resource Groups, App Service Plans, and DNS TXT verification records.
 
 ---
 
@@ -181,40 +379,6 @@ Click **GEV MIC** in the bottom dock, grant microphone permissions, and converse
 
 ---
 
-## ⚡ Quick Start & Deployment
-
-### Option 1: Instant Cloud Web App (No Setup Required)
-Open **[godseyeview.earthsphere.in](https://godseyeview.earthsphere.in)** in any modern web browser (Chrome, Edge, Firefox, Safari).
-
-### Option 2: Run Locally (Node.js)
-```bash
-# Clone Abhilash's repository
-git clone https://github.com/djabhi31/gods-eye-view.git
-cd gods-eye-view
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Or start the production cloud server
-npm start
-```
-Open **`http://localhost:4173`** in your browser.
-
-### Option 3: Deploy to Azure App Service
-1. Create a Linux Web App on Microsoft Azure (Node.js 22 LTS).
-2. Set up GitHub deployment credentials in Azure (User-assigned managed identity or OIDC).
-3. Add the following repository secrets to your GitHub repo:
-   - `AZUREAPPSERVICE_CLIENTID_*`
-   - `AZUREAPPSERVICE_TENANTID_*`
-   - `AZUREAPPSERVICE_SUBSCRIPTIONID_*`
-4. Set App Service startup command to: `node server.mjs`.
-5. Push to `main` — GitHub Actions handles the rest!
-
----
-
 ## 🔑 API Keys & BYOK Model
 
 All basic layers function **100% free and without keys**. Upgrades can be added anytime:
@@ -233,6 +397,40 @@ When using the live deployment at `godseyeview.earthsphere.in`, click the **POWE
 
 ---
 
+## 🔄 Lifetime Automated Upstream Sync
+
+To ensure this repository remains permanently up to date with Bilawal Sidhu's canonical upstream repo without overwriting Abhilash's Cloud modifications, an automated synchronization architecture is integrated:
+
+```
+[ bilawalsidhu/gods-eye-view:main ]
+              │
+              │ (Daily GitHub Action: .github/workflows/sync-upstream.yml)
+              ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│                   UPSTREAM SYNC ENGINE (sync-upstream.mjs)             │
+│                                                                        │
+│  1. Fetches latest upstream commits & detects changes                  │
+│  2. Backs up Cloud Edition artifacts (server.mjs, Azure configs, etc.) │
+│  3. Merges upstream source code changes cleanly                        │
+│  4. Restores Cloud Edition customizations & BYOK storage hooks         │
+│  5. Executes "npm run build" to ensure 100% build integrity            │
+│  6. Commits & pushes to origin/main ➔ Automatically triggers Azure CI  │
+└────────────────────────────────────────────────────────────────────────┘
+              │
+              ▼
+[ djabhi31/gods-eye-view:main ] ➔ Auto-Deployed to godseyeview.earthsphere.in
+```
+
+### Triggering Manual Sync
+You can trigger the sync anytime:
+- **From GitHub UI**: Go to **Actions** ➔ **Automated Upstream Sync** ➔ Click **Run workflow**.
+- **From Terminal**:
+  ```bash
+  npm run sync:upstream
+  ```
+
+---
+
 ## 👥 Maintainers & Attributions
 
 This project represents the convergence of open-source innovation and cloud architecture:
@@ -241,7 +439,7 @@ This project represents the convergence of open-source innovation and cloud arch
 | :--- | :--- | :--- |
 | **Original Creator & Visionary** | **[Bilawal Sidhu](https://github.com/bilawalsidhu)** | Original concept, shaders, UI design, 3D engine, and viral series |
 | **Core Maintainer (Upstream)** | **[Sameh Khamis](https://github.com/samehkhamis)** | Core stability, architecture, and optimizations at Halfpixel |
-| **Cloud Edition Maintainer & Architect** | **[Abhilash Ghosh](https://github.com/djabhi31)** | Cloud architecture, Azure deployment, `server.mjs`, BYOK engine, security audits, and EarthSphere integration |
+| **Cloud Edition Maintainer & Architect** | **[Abhilash Ghosh](https://github.com/djabhi31)** | Cloud architecture, Azure deployment, `server.mjs`, BYOK engine, lifetime sync engine, security audits, and EarthSphere integration |
 
 ---
 
