@@ -14,6 +14,49 @@
  * the chip and the dialog are removed outright.
  */
 
+import { KEY_SETUP_KEYS } from './keySetupCore.mjs';
+
+export const LOCAL_STORAGE_ENV_MAP = {
+  'GOOGLE_MAPS_API_KEY': 'gev_google_maps_key',
+  'CESIUM_ION_TOKEN': 'gev_cesium_token',
+  'OPENAI_API_KEY': 'gev_openai_key',
+  'AISSTREAM_API_KEY': 'gev_aisstream_key',
+  'FIRMS_MAP_KEY': 'gev_firms_key',
+  'TOMTOM_API_KEY': 'gev_tomtom_key',
+  'OPENSKY_CLIENT_ID': 'gev_opensky_client_id',
+  'OPENSKY_CLIENT_SECRET': 'gev_opensky_client_secret',
+  'LL2_API_TOKEN': 'gev_ll2_token',
+};
+
+export function getLocalStorageStatus() {
+  const keys = KEY_SETUP_KEYS.map((entry) => {
+    const values = entry.envVars.map((name) => {
+      const storageKey = LOCAL_STORAGE_ENV_MAP[name];
+      const fromLocal = storageKey && typeof localStorage !== 'undefined' ? localStorage.getItem(storageKey) : null;
+      const fromEnv = typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env[name] : null;
+      return String(fromLocal || fromEnv || '').trim();
+    });
+    const set = values.every((v) => v.length > 0);
+    return {
+      id: entry.id,
+      title: entry.title,
+      unlocks: entry.unlocks,
+      getUrl: entry.getUrl,
+      envVars: [...entry.envVars],
+      tier: entry.tier,
+      clientExposed: Boolean(entry.clientExposed),
+      set,
+      managed: 'file',
+    };
+  });
+  return {
+    keys,
+    setCount: keys.filter((k) => k.set).length,
+    total: keys.length,
+    store: 'browser-storage',
+  };
+}
+
 /** Chip label — pure, exported for tests. */
 export function keySetupChipLabel(status) {
   const missing = Math.max(0, (status?.total || 0) - (status?.setCount || 0));
@@ -150,16 +193,15 @@ export async function initKeySetup({ documentRef = globalThis.document, fetchImp
   const doFetch = fetchImpl || globalThis.fetch?.bind(globalThis);
 
   let status = null;
+  let isLocalStorageMode = false;
   try {
     const response = await doFetch('/api/setup/status', { cache: 'no-store' });
     if (!response.ok) throw new Error(String(response.status));
     status = await response.json();
   } catch {
-    // Prod build or non-loopback visitor: the surface cannot function, so it
-    // does not exist. (The README covers .env for headless/self-host setups.)
-    chip.remove();
-    root.remove();
-    return null;
+    // Web deployment / remote visitor: Enable browser localStorage BYOK mode!
+    isLocalStorageMode = true;
+    status = getLocalStorageStatus();
   }
 
   const rowsHost = root.querySelector('[data-key-setup-rows]');
@@ -175,9 +217,8 @@ export async function initKeySetup({ documentRef = globalThis.document, fetchImp
   const render = (nextStatus) => {
     status = nextStatus;
     chipLabel.textContent = keySetupChipLabel(status);
-    // Fully powered is the owner's clean screen: the chip retires. The dialog
-    // stays reachable this session (and via ?setup=1) to swap or verify keys.
-    chip.hidden = status.setCount >= status.total;
+    // Keep chip accessible so user can always configure or remove keys on web
+    chip.hidden = false;
     if (!rowsHost) return;
     rowsHost.textContent = '';
     for (const key of status.keys || []) rowsHost.append(buildRow(documentRef, key));
@@ -251,9 +292,11 @@ export async function initKeySetup({ documentRef = globalThis.document, fetchImp
 
   const say = (text) => { if (statusLine) statusLine.textContent = text; };
 
-  const storeLabel = () => (status?.store === 'pinokio-environment'
-    ? 'your app configuration'
-    : 'your local .env');
+  const storeLabel = () => (status?.store === 'browser-storage'
+    ? 'your browser storage'
+    : (status?.store === 'pinokio-environment'
+      ? 'your app configuration'
+      : 'your local .env'));
 
   const submitUpdates = async (updates, doneVerb) => {
     if (busy) return;
@@ -261,6 +304,41 @@ export async function initKeySetup({ documentRef = globalThis.document, fetchImp
     busy = true;
     applyButton?.setAttribute('aria-disabled', 'true');
     say('Saving…');
+
+    if (isLocalStorageMode) {
+      try {
+        for (const [name, value] of Object.entries(updates)) {
+          const storageKey = LOCAL_STORAGE_ENV_MAP[name];
+          if (!storageKey) continue;
+          if (value === null) {
+            localStorage.removeItem(storageKey);
+          } else {
+            localStorage.setItem(storageKey, value);
+          }
+        }
+        if (googleWasUnset && updates['GOOGLE_MAPS_API_KEY']) {
+          const strip = () => {
+            try {
+              const next = stripKeylessBasemapFromHash(globalThis.location?.hash?.slice(1) || '');
+              if (next !== null) globalThis.history?.replaceState?.(null, '', `#${next}`);
+            } catch {}
+          };
+          strip();
+        }
+        for (const input of root.querySelectorAll('input[data-env-var]')) input.value = '';
+        render(getLocalStorageStatus());
+        say(`${doneVerb} browser storage. Reloading in 1s to activate...`);
+        setTimeout(() => {
+          globalThis.location?.reload?.();
+        }, 1000);
+      } catch (error) {
+        say(`Save failed: ${error?.message || error}`);
+      } finally {
+        busy = false;
+        applyButton?.setAttribute('aria-disabled', 'false');
+      }
+      return;
+    }
     try {
       const response = await doFetch('/api/setup/keys', {
         method: 'POST',

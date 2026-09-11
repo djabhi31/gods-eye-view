@@ -78,8 +78,11 @@ async function init() {
 
     // A direct Google key provides Google 3D plus GEV place search. Cesium ion
     // can host the same 3D tiles and also powers Bing/world-terrain stacks.
-    const cesiumToken = import.meta.env.CESIUM_ION_TOKEN;
-    const googleApiKey = import.meta.env.GOOGLE_MAPS_API_KEY;
+    // Check user's localStorage first (BYOK support for deployed website), fallback to build/env.
+    const localCesium = typeof localStorage !== 'undefined' ? localStorage.getItem('gev_cesium_token') : null;
+    const localGoogle = typeof localStorage !== 'undefined' ? localStorage.getItem('gev_google_maps_key') : null;
+    const cesiumToken = (localCesium && localCesium.trim()) || import.meta.env.CESIUM_ION_TOKEN || '';
+    const googleApiKey = (localGoogle && localGoogle.trim()) || import.meta.env.GOOGLE_MAPS_API_KEY || '';
     if (googleApiKey) window.__GOOGLE_MAPS_API_KEY__ = googleApiKey;
 
     // Create the Cesium viewer with minimal chrome

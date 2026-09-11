@@ -659,9 +659,14 @@ export class IntelHUD {
     const timeout = window.setTimeout(() => controller.abort(), 5000);
     this._summaryRequest = controller;
     try {
+      const storedOpenAiKey = typeof localStorage !== 'undefined' ? localStorage.getItem('gev_openai_key') : null;
+      const headers = { 'Content-Type': 'application/json' };
+      if (storedOpenAiKey && storedOpenAiKey.trim()) {
+        headers['x-openai-key'] = storedOpenAiKey.trim();
+      }
       const response = await fetch(HUD_SUMMARY_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify(context),
         signal: controller.signal,
       });
