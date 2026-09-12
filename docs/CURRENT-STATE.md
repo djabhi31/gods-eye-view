@@ -2494,6 +2494,29 @@ silently demoting every later lookup for the session.
 - Input is the live basemap label context (place/street/nearby-place labels + enabled layers) — the model is instructed not to infer from coordinates.
 - Output is sanitized to exactly five words; falls back to the deterministic telemetry summary on error/timeout (5s abort); typewriter animation on update.
 
+### Place-search providers
+
+Location search/fly-to, annotations and Radio location lookup receive one
+`placeSearch.geocode(query, { bias, signal })` service. `src/standalone` composes
+Google first when configured and Photon/OpenStreetMap as fallback, including
+Google transport failures or declined requests. The portable `./search` export
+provides the service and adapters; it reads no environment or application state.
+Existing browser/server key setup is unchanged.
+
+Providers normalize coordinates, canonical name, label, place types and optional
+bounds. Camera framing, nearby landmark recovery and footprint selection remain
+in their consumers, including the Capitol identity/containment safeguards.
+Radio keeps localized country names in labels rather than station filters.
+Reverse geocoding and nearby/text-search endpoints retain their existing behavior.
+
+Only valid answers and definitive misses enter bounded caches; malformed replies,
+HTTP refusals and outages remain retryable. Searches share a 12-second total
+deadline, with Photon requests capped at six seconds each. Caller/application
+cancellation stops retries and late cache writes. Replacing a location search
+cancels the previous lookup. Photon uses a soft proximity bias, up to five
+candidates, and an unbiased retry for name mismatches. Invalid/wrapped bounds
+are omitted rather than framing the wrong part of the globe.
+
 ### Map Stack Switcher (June 2026)
 
 - `src/mapStackController.js` switches between Google Photorealistic 3D (`photoreal`, the default when a Google or ion key is present), keyless Esri World Imagery (the zero-key default landing, with keyless terrain), Bing Aerial / Aerial-with-Labels via Cesium ion world imagery (require `CESIUM_ION_TOKEN`), and OSM tile fallback. Bing Road is **retired**: it is gone from `MAP_STACKS`, from the `set_map_stack` enum, and from the voice aliases (road phrasings now resolve to OSM, the one shipped road basemap). An old `map=bing-road` link is simply an unknown id and takes `setStack()`'s existing photoreal fallback with the Google 3D tile lit — pinned live in `scripts/qa-map-source-tray.mjs`.

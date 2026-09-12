@@ -169,3 +169,16 @@ accepts an optional `annotationGuidance` paragraph. Neither factory starts
 acquisition on import. Setup retains its pre-environment-load provenance capture
 and development-only registration. Package checks enumerate every owned module
 and reject browser imports of these Node entries.
+
+## Browser place search
+
+`gods-eye-view/search` exports an explicit geocoding service and Google/Photon
+adapters. The entry owns normalization, bounded caches, deadlines and fallback
+sequencing. It imports no application state, environment configuration, rendering
+or Node server code. Google transport is supplied by its caller.
+
+`src/standalone/placeSearch.js` constructs the configured Google request and
+keyless Photon fallback. The application passes this service to location
+controls, annotation resolution and voice/radio actions. Those consumers retain
+framing, landmark recovery, footprint matching and playback decisions. Existing
+reverse geocoding and nearby/text-search routes remain separate.

@@ -253,5 +253,15 @@
       "src/keySetupHardening.mjs"
     ],
     "external": []
+  },
+  "place-search": {
+    "exports": ["./search"],
+    "modules": [
+      "src/search/index.js",
+      "src/search/placeSearch.js",
+      "src/search/google.js",
+      "src/keylessGeocoder.js"
+    ],
+    "external": []
   }
 }

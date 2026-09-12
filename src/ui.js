@@ -2189,9 +2189,10 @@ export class StyleManager {
    * @param {Cesium.Viewer} viewer - The CesiumJS viewer instance.
    * @param {object} [options]
    */
-  constructor(viewer, { mapStackController = null } = {}) {
+  constructor(viewer, { mapStackController = null, placeSearch } = {}) {
     this.viewer = viewer;
     this.mapStackController = mapStackController;
+    this.placeSearch = placeSearch;
     this.stages = {};
     this.activeStyle = 'normal';
     document.documentElement.dataset.gevStyle = this.activeStyle;
@@ -4235,6 +4236,7 @@ export class StyleManager {
     };
     if (panelId === 'control-panel') {
       this._cancelMapSourceFocus?.();
+    this._locationSearchController?.abort();
       this._cancelMapSourceFocus = cancelMapSourceFocus;
     }
 
@@ -9497,9 +9499,14 @@ export class StyleManager {
           return;
         }
         this._activeLocationSearchGeneration = generation;
+        this._locationSearchController?.abort();
+        const searchController = new AbortController();
+        this._locationSearchController = searchController;
         this._locationSearch.classList.add('searching');
         try {
           const destination = await searchAndFlyTo(this.viewer, query, {
+            placeSearch: this.placeSearch,
+            signal: searchController.signal,
             beforeFly: () => this._reassertNavigationHandoff(generation),
           });
           if (this._disposed || generation !== this._navigationGeneration) return;
@@ -9523,10 +9530,12 @@ export class StyleManager {
             this._showToast('Location not found');
           }
         } catch (err) {
+          if (searchController.signal.aborted) return;
           console.error('[Search] Geocoding failed:', err);
           if (this._disposed || generation !== this._navigationGeneration) return;
           this._showToast('Search failed');
         } finally {
+          if (this._locationSearchController === searchController) this._locationSearchController = null;
           this._settleLocationSearchUi(generation);
         }
       }
