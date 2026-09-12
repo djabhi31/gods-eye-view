@@ -124,7 +124,11 @@
   "gbfs-provider": {
     "runtime": "node",
     "exports": ["./server/providers/gbfs"],
-    "modules": ["server/providers/gbfs.js", "src/data/gbfsSource.js"],
+    "modules": [
+      "server/providers/gbfs.js",
+      "server/providers/common/http.js",
+      "src/data/gbfsSource.js"
+    ],
     "external": []
   },
   "gbfs-source": {
