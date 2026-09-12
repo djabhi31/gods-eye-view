@@ -1,6 +1,144 @@
 # God's Eye View Current State
 
+## Remaining local service modules
+
+Overpass query validation, geometry simplification, disk caching and upstream
+transport now have separate modules; military-installation search reuses that
+transport. Regional briefing combines separate place, news and weather sources,
+while weather effects uses only the weather source. Existing process-scoped
+caches, rate limits, stale fallbacks and route ordering are preserved.
+
+Local voice has separate HUD-summary, debug-log and Realtime-token handlers,
+with tool definitions and instructions in dedicated files. The factory accepts
+an optional `annotationGuidance` paragraph; its default instructions and all 28
+tool definitions remain unchanged. `sourceRoot` resolves debug logs against the
+application directory. Standalone key setup accepts the same directory option
+for its environment store and preserves boot provenance, loopback/origin guards,
+atomic credential writes and development-only registration.
+
+Node-only package entries expose Overpass, military installations, regional
+services, local voice and standalone key setup. Importing them starts no network
+acquisition. Browser layer lifecycle, rendering and voice execution stay in their
+existing modules.
+
+## Local build preview
+
+After `npm run build`, `npm run preview` serves the built app with the same data
+provider routes as development, including aircraft, satellites, terrain, traffic,
+FIRMS, GBFS, Overpass and CCTV/media. Unmatched `/api` requests return a JSON 404
+in both modes instead of the application HTML. Browser routes retain SPA fallback.
+Credential editing (`/api/setup/*` and Provider Settings) is development-only;
+preview returns JSON 404 for those endpoints. Server credentials come from the
+local environment; browser keys are captured at build time. Rebuild after changing
+a browser key. Preview is for local build verification, not a production server.
+
+
+## CCTV and radio provider modules
+
+CCTV catalog acquisition, source normalization and frame/media delivery now live
+in separate modules. Each CCTV factory owns its catalog and health state; its
+`sourceRoot` option resolves relative source files against the application root.
+Radio Browser station normalization, restricted outbound transport and directory
+caching are separate modules. Node-only package entries expose both provider
+factories. Routes, payloads, fallback behavior and existing dev/preview hook
+registration are preserved; browser rendering is unchanged.
+
+## Terrain, traffic, fire and bike-share provider modules
+
+Local composition now imports separate Node modules for Re:Earth heights,
+TomTom flow tiles, NASA FIRMS detections and GBFS station feeds. Existing routes,
+plugin order, server-key selection, validation, disk caches, budgets, retries
+and stale/error responses remain unchanged. Each has a Node-only package entry
+under `gods-eye-view/server/providers/`. Portable terrain mechanics, traffic tile
+math and GBFS source rules are available under `gods-eye-view/sources/`.
+The browser layers and their rendering remain in their existing modules.
+
+## Landmark annotation identity
+
+When a landmark geocode contains only address components, annotations retain
+its requested name for outline matching. A city or neighborhood address no
+longer replaces the landmark's identity. Without a canonical feature name,
+outline candidates must contain the geocoded anchor or closely match the
+requested name; otherwise the annotation stays at its geocoded point.
+Genuine feature-name components and existing administrative/monument matching
+retain their established behavior.
+
+## Satellite and launch provider modules
+
+`server/providers/space/` owns the CelesTrak TLE and Launch Library 2 Node
+proxies. Their routes, six-hour/15-minute caches, disk storage, stale fallback,
+request coalescing and optional LL2 server token retain existing behavior.
+The Node-only `gods-eye-view/server/providers/space` export supplies factories;
+`sources/space` supplies fixed upstream URL builders with no I/O or environment
+access. Callers retain validation, transport and response policy.
+
+## Build configuration and local provider boundaries
+
+`vite.config.js` delegates to `server/standalone/vite.config.js`, which loads
+this checkout's environment and constructs the local providers in their existing
+order. `server/providers/local.js` is the composition and compatibility entry;
+provider families own their middleware and process state in focused modules.
+Provider URLs, key selection, cache behavior, setup restrictions and routes are
+unchanged.
+
+`gods-eye-view/build/vite` is a Node-only export for explicit browser build
+settings: Cesium assets, caller-supplied plugins, browser key defines, server
+binding and document/credential protections. It never reads an environment file
+or constructs providers. The standalone caller owns those choices.
+
+Browser startup now lives in `src/standalone/`. That directory contains only
+browser code; Node configuration remains under `server/`. Application lifecycle
+and viewer export paths are unchanged.
+
+## Application startup and shutdown
+
+The standalone entry now composes scene setup, controls, layer registration and
+tools through the reusable application lifecycle. Map defaults, layer order,
+share restoration, voice setup and the running debug handle retain their behavior.
+The welcome card still waits for restoration and the loading-cover transition.
+
+Startup failure cleans up acquired resources. Explicit application destruction
+aborts construction, cancels pending playback/annotations and delayed welcome UI,
+then releases controls, layers and the viewer. Destruction is terminal; the
+standalone page must be reloaded to start again. The exported lifecycle and viewer
+helpers do not import the standalone entry or discover configuration. See
+[application construction](APPLICATION.md).
+
+## Scoped formatting and package checks
+
+`npm run format` and `npm run format:check` operate on the explicit adopted-file
+list. `npm run check:boundaries` checks the dependency graph of all
+current package exports in their declared browser or Node runtime; infrastructure owns its three implementation modules
+and takes Cesium from the consumer. CI runs both checks on Linux and Windows.
+The standalone app, layer behavior and public export paths remain unchanged.
+See [component ownership and adoption](CODE-BOUNDARIES.md).
+
+## Google browser and server keys
+
+Local Places nearby/text search and the CCTV Street View fallback prefer
+`GOOGLE_MAPS_SERVER_API_KEY`, falling back to `GOOGLE_MAPS_API_KEY` when the
+server key is blank or absent. Only the browser key is injected into client
+code. POWER UP presents one Google Maps entry for the browser key. The optional
+server key is configured manually in the same ignored root `.env`, or Pinokio's
+ignored `pinokio/ENVIRONMENT`; it is omitted from Provider Settings and its
+missing-key count. Existing server keys and the single-key fallback remain
+supported. `.env.example` and `pinokio/_ENVIRONMENT` document both entries.
+The Street View headings tool uses the same server-first selection after
+resolving environment overrides per variable; its explicit `--key` wins.
+
+
 ## Infrastructure marker visibility
+
+Datacenter/dam registration uses fresh reusable factories with the application's
+existing context, overlay and render functions. The scoped package exports do
+not import standalone application globals; see
+[the infrastructure interface](INFRASTRUCTURE-LAYERS.md) for lifecycle and asset
+requirements.
+
+Local GeoJSON layers coalesce concurrent enables into one load. Disabling while
+loading keeps the result hidden; destruction aborts the fetch and rejects late
+parse/add results. Destruction and failed setup remove owned context records,
+so replacing a layer cannot retain stale entities or listeners.
 
 Datacenters and dams retain their full datasets while limiting active marker
 stems per layer: 80 at camera heights of 3,000 km or above, 200 from 200 km,
@@ -109,6 +247,23 @@ Non-object or array-valued properties reject the response instead of being treat
 Launch payloads with missing records now say PAYLOAD DATA UNAVAILABLE. Missing names use Unnamed payload; absent or invalid mass stays unknown instead of appearing as 0 KG.
 
 Updated: August 24, 2026
+
+## Aircraft and vessel server modules
+
+Standalone aircraft routes now live in `server/providers/aircraft/`: OpenSky
+state vectors and regional fallback, adsb.lol military positions, ADSBDB
+enrichment and track backfill. Vessel routes and websocket/watchdog setup live
+in `server/providers/vessels/ais-live.js`; AIS records and recent tracks live
+in `ais-store.js`. Common response caps, request coalescing and query parsing
+have their own modules. `server/providers/local.js` composes these with the
+remaining providers and retains existing named compatibility exports.
+
+`gods-eye-view/server/providers/live` is a Node-only entry for the existing
+plugins and shared request helpers. Importing it starts no sockets or timers.
+The existing aircraft normalizer is separately available through the portable
+`gods-eye-view/sources/adsb-lol` export. Provider URLs, local credentials, cache
+policy, fallback behavior, response shapes and rendering remain unchanged.
+
 
 ## Control names for assistive technology
 
@@ -1056,12 +1211,20 @@ This is the current runtime/source-of-truth snapshot for the project.
 >   settled dim contact always completes its release after tracking ends.
 > - **Terrain-height resilience:** `/api/terrain/heights` caches canonical
 >   5-decimal points individually, reconstructs reordered/overlapping batches
->   in exact request order, and refreshes only missing or stale points. Network,
->   429, and 5xx failures receive bounded jittered retries with `Retry-After`;
->   stale real heights remain usable per point, while an uncached absent height
->   still returns 502 rather than becoming a fabricated ground value. Client
->   geoid fallbacks wait 60 seconds before retrying and self-heal to Re:Earth on
->   the first later successful fetch.
+>   in exact request order, and refreshes only missing or stale points. Upstream
+>   calls and browser requests are both chunked at 64 points, sized to fit
+>   their 30s deadlines across Re:Earth's observed 87-186 ms/point range; a chunk
+>   that still fails contributes nulls for its own positions instead of
+>   discarding the chunks that resolved. Network, 429, and 5xx failures receive
+>   bounded jittered retries with `Retry-After`; stale real heights remain
+>   usable per point, while an uncached absent height still returns 502 rather
+>   than becoming a fabricated ground value. A position the upstream answers
+>   with a null ellipsoid is reported as an absent height rather than a refresh
+>   failure, and is left uncached so a later poll re-asks it. Client geoid
+>   fallbacks wait 60 seconds before retrying and self-heal to Re:Earth on the
+>   first later successful fetch. Smaller chunks reduce timeout risk; complete
+>   camera batches still wait for their sequential requests, and unresolved
+>   placement continues to use the existing prior until real heights arrive.
 > - **Overpass cache admission:** `/api/overpass` parses and sanitizes requests,
 >   then checks fresh memory, identical in-flight work, and fresh disk entries
 >   before invoking its local 90/min limiter. Cache and single-flight responses

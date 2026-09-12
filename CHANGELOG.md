@@ -13,6 +13,86 @@ of current runtime behavior, see [`docs/CURRENT-STATE.md`](docs/CURRENT-STATE.md
 
 ## [Unreleased]
 
+- Split Overpass/installation search, regional briefing/weather, local voice
+  handlers and standalone key setup into focused modules. Preserve routes,
+  source behavior, tool schemas and credential restrictions.
+
+- Restore data-provider routes under local build preview and return JSON 404s
+  for unmatched API requests. Credential editing remains development-only.
+
+- Extract CCTV catalog/media and Radio Browser directory providers into focused
+  Node modules, preserving their routes and policies and isolating CCTV catalogs
+  by provider instance and application root.
+
+- Simplify POWER UP to one Google Maps entry. Keep the optional server key
+  available through environment configuration without a second setup row or
+  missing-key reminder.
+
+- Separate terrain, traffic, FIRMS and GBFS middleware into focused provider
+  modules, preserving local configuration, routes and cache/error behavior.
+
+- Split satellite and launch-feed server providers into focused modules with
+  portable request URL builders, preserving routes and cache/error behavior.
+
+- Keep landmark names when geocoding returns only address components, preventing
+  the United States Capitol annotation from moving to a Washington hotel.
+  Unrelated outlines leave the valid geocoded marker in place.
+
+- Split aircraft and vessel server providers into focused modules for source
+  fetching, AIS records/tracks and shared request helpers; preserve existing
+  routes, local setup, fallback behavior and rendering.
+
+
+### Changed
+- Separate explicit browser build settings from standalone environment loading
+  and local provider middleware. Preserve provider behavior and root named exports.
+- Rename standalone browser startup to `src/standalone/` and add a Node-only
+  `gods-eye-view/build/vite` export with checked package ownership.
+
+
+### Development
+
+- Extract application lifecycle and viewer exports. Split standalone startup into
+  scene setup, controls, layer registration, tools and loading UI. Startup failure
+  and terminal shutdown release acquired resources and cancel delayed work.
+
+- Adopt Prettier tooling contributed by RohanDaCoder (#227), with an explicit
+  file scope, pinned formatter and Linux/Windows CI checks. Format the reusable
+  infrastructure modules and their consumer tests. Package boundary checks keep
+  those exports separate from app startup and local Node services.
+
+### Fixed
+
+- Reduce terrain-height timeouts when Re:Earth slows down. Batches are
+  sized against measured response latency on both browser and server to reduce
+  request timeouts, and a partial upstream failure now
+  keeps the heights that did resolve rather than discarding them. A position
+  the upstream answers with no height is reported as an absent reading instead
+  of a failed refresh, so the log distinguishes a slow or broken upstream from
+  one that simply has no value for a coordinate.
+
+- Separate optional Google server credentials for Places and Street View from
+  the browser key, contributed by Tom-Neverwinter (#110). Provider Settings,
+  Pinokio's app-specific credential handling and setup diagnostics recognize
+  both keys. The Street View tool prefers the server key across environment
+  and `.env` sources. Existing single-key and keyless setups remain supported.
+
+- Complete the first-run, view-target prewarm, cockpit-plates and floor-hold
+  browser harness renderer portability fixes contributed by Tom-Neverwinter.
+  macOS retains Metal; other platforms default to SwiftShader. Cockpit renderer
+  assertions and evidence labels follow the actual selected mode. Floor-hold
+  explicitly selects its measured 2D billboard mode and keeps its mesh and terrain assertions; software runs are not real-GPU evidence.
+  First-run QA now checks the existing attribution Escape-close/focus-return
+  behavior while preserving the launcher-underneath regression checks.
+
+
+- Datacenter and dam factories are available through scoped package exports with
+  explicit context, overlay and render callbacks. The standalone app uses the
+  same implementation and bundled datasets.
+
+- Local GeoJSON layers share concurrent loads, cancel pending fetches on destruction,
+  discard late results, and remove their entity-context records on teardown.
+
 - Unchanged local infrastructure overlays no longer sustain idle rendering.
   Ground samples wait for visible terrain to settle and cannot place a marker
   below its loaded surface; roofs and valid below-sea-level heights are retained.

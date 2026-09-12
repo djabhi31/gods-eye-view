@@ -489,12 +489,12 @@ for (const [heightM, minStemM, maxStemM] of [[500, 45, 90], [10000, 1100, 1400]]
 }
 
 test('local infrastructure creates no native labels or per-frame geometry callbacks', () => {
-  const source = readFileSync(new URL('./localGeojson.js', import.meta.url), 'utf8');
+  const source = readFileSync(new URL('./localGeojsonCore.js', import.meta.url), 'utf8');
   assert.doesNotMatch(source, /new Cesium\.LabelGraphics/);
   assert.doesNotMatch(source, /new Cesium\.CallbackProperty/);
   assert.match(source, /feature\.position = tip/);
   assert.match(source, /record\.entity\.position\.setValue\(record\.tip\)/);
-  assert.match(source, /const stemPositionBuffers = \[\[base, tip\], \[base, tip\]\]/);
+  assert.match(source, /const stemPositionBuffers = \[\s*\[base, tip\],\s*\[base, tip\],?\s*\]/);
   assert.match(source, /record\.entity\.polyline\.positions\.setValue\(stemPositions\)/);
   assert.match(source, /viewer\.camera\.moveEnd\.addEventListener/);
   assert.match(source, /if \(refreshStemGeometry \|\| terrainFloorChanged\)/);
@@ -1335,4 +1335,16 @@ test('globe-LOD re-selects during continuous motion, without ever seeing a moveE
   clock.advance(2_000);
   env.preRender.raise();
   assert.deepEqual(env.layer.getLodDiagnostics(), parked, 'a parked camera never re-selects');
+});
+
+
+test('standalone publisher retains its default host for an undefined override', () => {
+  const publisher = createLocalInfrastructureOverlayPublisher({
+    sourceId: 'local-default-host-test', host: undefined,
+  });
+  assert.doesNotThrow(() => {
+    publisher.show();
+    publisher.hide();
+    publisher.destroy();
+  });
 });

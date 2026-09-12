@@ -3,7 +3,9 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
-const source = readFileSync(new URL('../vite.config.js', import.meta.url), 'utf8');
+const source = ['local.js', 'common/http.js', 'aircraft/enrichment.js', 'terrain.js', 'space/celestrak.js', 'space/launch-library.js', '../../src/data/spaceProviderRequests.js']
+  .map(file => readFileSync(new URL(`../server/providers/${file}`, import.meta.url), 'utf8'))
+  .join('\n');
 const detail = 'fixture-secret-token /internal/example <html>';
 
 // Execute the production middleware with isolated upstreams and cache storage.
@@ -32,7 +34,7 @@ function fixture(name, overrides = {}, preview = false) {
     resolveTerrainHeightRequest: async () => { throw new Error(detail); },
     ...overrides,
   };
-  const helpers = ['readResponseTextCapped', 'coalesceProxyRequest', 'launchLibraryRequestHeaders'].map(extract).join('\n');
+  const helpers = ['readResponseTextCapped', 'coalesceProxyRequest', 'launchLibraryRequestHeaders', 'celestrakTleUrl', 'launchLibraryRecentUrl'].map(extract).join('\n');
   const plugin = new Function(...Object.keys(deps), `${helpers}\n${extract(name)}\nreturn ${name}();`)(...Object.values(deps));
   let middleware;
   plugin[preview ? 'configurePreviewServer' : 'configureServer']({ middlewares: { use(_route, handler) { middleware = handler; } } });
