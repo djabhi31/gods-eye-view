@@ -764,9 +764,7 @@ export async function fetchOverpassPayload(body, maxResponseBytes = OVERPASS_MAX
  * @returns {import('vite').Plugin}
  */
 function overpassProxy() {
-  return {
-    name: 'overpass-proxy',
-    configureServer(server) {
+  const installMiddleware = (server) => {
       server.middlewares.use('/api/overpass', async (req, res) => {
         // Hoisted out of the try so the catch's serve-stale lookup can see it
         // (a body-read failure would otherwise hit an out-of-scope reference).
@@ -896,7 +894,11 @@ function overpassProxy() {
       });
 
       installRouteMiddleware(server.middlewares);
-    },
+    };
+  return {
+    name: 'overpass-proxy',
+    configureServer: installMiddleware,
+    configurePreviewServer: installMiddleware,
   };
 }
 
