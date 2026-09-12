@@ -41,22 +41,24 @@ console.log('Maintainer: Abhilash Ghosh (@djabhi31)');
 console.log('Upstream:   Bilawal Sidhu (bilawalsidhu/gods-eye-view)');
 console.log('===========================================================\n');
 
-// 1. Ensure upstream remote exists
+// 1. Ensure upstream remote exists with proper ref tracking
 const remotes = runSilent('git remote');
-if (!remotes.split('\n').includes('upstream')) {
+if (!remotes.split('\n').map((r) => r.trim()).includes('upstream')) {
   console.log('[1/5] Adding upstream remote...');
   run('git remote add upstream https://github.com/bilawalsidhu/gods-eye-view.git');
 } else {
   console.log('[1/5] Upstream remote configured.');
 }
+run('git config remote.upstream.fetch "+refs/heads/*:refs/remotes/upstream/*"');
 
-// 2. Fetch latest commits from upstream
-console.log('[2/5] Fetching upstream/main...');
-run('git fetch upstream main');
+// 2. Fetch latest commits from upstream into explicit ref
+console.log('[2/5] Fetching upstream branches...');
+run('git fetch upstream +refs/heads/main:refs/remotes/upstream/main');
 
 // 3. Check for new commits
 const aheadBehind = runSilent('git rev-list --count HEAD..upstream/main');
-const newCommitsCount = parseInt(aheadBehind || '0', 10);
+const parsed = parseInt(String(aheadBehind || '').trim(), 10);
+const newCommitsCount = (Number.isNaN(parsed) || parsed <= 0) ? 0 : parsed;
 
 if (newCommitsCount === 0) {
   console.log('\n✅ Your repository is already 100% up-to-date with upstream!');
@@ -76,14 +78,16 @@ const BACKUP_FILES = [
   '.gitignore',
   '.github/workflows/main_godseyeview.yml',
   '.github/workflows/sync-upstream.yml',
+  '.github/workflows/release.yml',
   'src/keySetup.js',
+  'public/og-image.jpg',
 ];
 
 const backups = new Map();
 for (const file of BACKUP_FILES) {
   const filePath = path.join(ROOT, file);
   if (fs.existsSync(filePath)) {
-    backups.set(file, fs.readFileSync(filePath, 'utf8'));
+    backups.set(file, fs.readFileSync(filePath));
   }
 }
 
@@ -96,24 +100,51 @@ try {
   for (const [file, content] of backups) {
     const filePath = path.join(ROOT, file);
     fs.mkdirSync(path.dirname(filePath), { recursive: true });
-    fs.writeFileSync(filePath, content, 'utf8');
-    run(`git add "${file}"`);
+    fs.writeFileSync(filePath, content);
+    run(`git add "${file}"`, { silent: true });
   }
-  run('git commit -m "chore(upstream): sync latest updates with Cloud Edition protections"');
+
+  // Resolve any remaining unmerged conflict files using ours
+  const unmerged = runSilent('git diff --name-only --diff-filter=U');
+  if (unmerged) {
+    for (const f of unmerged.split('\n').map((s) => s.trim()).filter(Boolean)) {
+      run(`git checkout --ours -- "${f}"`, { allowFailure: true, silent: true });
+      run(`git add "${f}"`, { allowFailure: true, silent: true });
+    }
+  }
+  
+  const mergeHead = path.join(ROOT, '.git', 'MERGE_HEAD');
+  if (fs.existsSync(mergeHead)) {
+    run('git commit -m "chore(upstream): sync latest updates with Cloud Edition protections"');
+  }
 }
 
-// Re-verify BYOK in main.js, hud.js, gevRealtime.js
+// Re-verify BYOK in main.js
 function patchBYOK() {
   const mainPath = path.join(ROOT, 'src/main.js');
   if (fs.existsSync(mainPath)) {
     let mainSrc = fs.readFileSync(mainPath, 'utf8');
     if (!mainSrc.includes('localCesium')) {
-      mainSrc = mainSrc.replace(
-        'const cesiumToken = import.meta.env.CESIUM_ION_TOKEN;',
-        `const localCesium = typeof localStorage !== 'undefined' ? localStorage.getItem('gev_cesium_token') : null;\n    const localGoogle = typeof localStorage !== 'undefined' ? localStorage.getItem('gev_google_maps_key') : null;\n    const cesiumToken = (localCesium && localCesium.trim()) || import.meta.env.CESIUM_ION_TOKEN || '';\n    const googleApiKey = (localGoogle && localGoogle.trim()) || import.meta.env.GOOGLE_MAPS_API_KEY || '';\n    if (googleApiKey) window.__GOOGLE_MAPS_API_KEY__ = googleApiKey;`
-      );
+      if (mainSrc.includes('createStandaloneApplication')) {
+        const replacement = `const localCesium = typeof localStorage !== 'undefined' ? localStorage.getItem('gev_cesium_token') : null;
+const localGoogle = typeof localStorage !== 'undefined' ? localStorage.getItem('gev_google_maps_key') : null;
+
+const application = createStandaloneApplication({
+  googleApiKey: (localGoogle && localGoogle.trim()) || import.meta.env.GOOGLE_MAPS_API_KEY || '',
+  cesiumToken: (localCesium && localCesium.trim()) || import.meta.env.CESIUM_ION_TOKEN || '',`;
+        mainSrc = mainSrc.replace(/const application = createStandaloneApplication\(\{[\s\S]*?cesiumToken:[^\n,]+,?/, replacement);
+      } else if (mainSrc.includes('const cesiumToken = import.meta.env.CESIUM_ION_TOKEN;')) {
+        mainSrc = mainSrc.replace(
+          'const cesiumToken = import.meta.env.CESIUM_ION_TOKEN;',
+          `const localCesium = typeof localStorage !== 'undefined' ? localStorage.getItem('gev_cesium_token') : null;\n    const localGoogle = typeof localStorage !== 'undefined' ? localStorage.getItem('gev_google_maps_key') : null;\n    const cesiumToken = (localCesium && localCesium.trim()) || import.meta.env.CESIUM_ION_TOKEN || '';\n    const googleApiKey = (localGoogle && localGoogle.trim()) || import.meta.env.GOOGLE_MAPS_API_KEY || '';\n    if (googleApiKey) window.__GOOGLE_MAPS_API_KEY__ = googleApiKey;`
+        );
+      }
       fs.writeFileSync(mainPath, mainSrc, 'utf8');
-      run('git add src/main.js');
+      run('git add src/main.js', { silent: true });
+      const status = runSilent('git status --porcelain src/main.js');
+      if (status) {
+        run('git commit -m "chore(byok): preserve localStorage BYOK fallback in main.js"', { allowFailure: true });
+      }
     }
   }
 }
@@ -121,6 +152,10 @@ patchBYOK();
 
 // 6. Test build integrity
 console.log('\n[5/5] Verifying build integrity...');
+if (!fs.existsSync(path.join(ROOT, 'node_modules'))) {
+  console.log('Installing dependencies...');
+  run('npm install');
+}
 run('npm run build');
 
 console.log('\n===========================================================');
