@@ -13,6 +13,9 @@ of current runtime behavior, see [`docs/CURRENT-STATE.md`](docs/CURRENT-STATE.md
 
 ## [Unreleased]
 
+- Cancel the active location lookup when its controls are disposed.
+
+
 ### Fixed
 
 - GBFS rejects upstream redirects, caps streamed responses at 5 MiB, and keeps
