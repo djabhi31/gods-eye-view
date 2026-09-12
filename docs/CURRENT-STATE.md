@@ -2513,7 +2513,7 @@ Only valid answers and definitive misses enter bounded caches; malformed replies
 HTTP refusals and outages remain retryable. Searches share a 12-second total
 deadline, with Photon requests capped at six seconds each. Caller/application
 cancellation stops retries and late cache writes. Replacing a location search
-cancels the previous lookup. Photon uses a soft proximity bias, up to five
+cancels the previous lookup; disposing its controls cancels the active lookup. Photon uses a soft proximity bias, up to five
 candidates, and an unbiased retry for name mismatches. Invalid/wrapped bounds
 are omitted rather than framing the wrong part of the globe.
 
