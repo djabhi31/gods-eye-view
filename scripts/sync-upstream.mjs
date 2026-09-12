@@ -140,6 +140,7 @@ const application = createStandaloneApplication({
         );
       }
       fs.writeFileSync(mainPath, mainSrc, 'utf8');
+      run('npm run format', { allowFailure: true, silent: true });
       run('git add src/main.js', { silent: true });
       const status = runSilent('git status --porcelain src/main.js');
       if (status) {
