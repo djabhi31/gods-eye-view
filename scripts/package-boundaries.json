@@ -325,5 +325,16 @@
       "src/keySetupCore.mjs"
     ],
     "external": []
+  },
+  "layer-panel": {
+    "exports": ["./ui/layers", "./ui/layers/feedback"],
+    "modules": [
+      "src/ui/layers.js",
+      "src/ui/layerPanel.js",
+      "src/ui/clearLayersControl.js",
+      "src/loadingFeedback.js",
+      "src/data/installationFeedback.js"
+    ],
+    "external": []
   }
 }
