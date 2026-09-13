@@ -273,5 +273,17 @@
     "exports": ["./ui/surfaces"],
     "modules": ["src/ui/surfaceKeyboard.js"],
     "external": []
+  },
+  "panel-rail-layout": {
+    "exports": ["./ui/layout"],
+    "modules": [
+      "src/ui/panelRails.js",
+      "src/ui/leftPanelRail.js",
+      "src/ui/rightPanelRail.js",
+      "src/ui/panelMeasurement.js",
+      "src/ui/panelRailGeometry.js",
+      "src/panelStackLayout.js"
+    ],
+    "external": []
   }
 }
