@@ -263,5 +263,10 @@
       "src/keylessGeocoder.js"
     ],
     "external": []
+  },
+  "panel-disclosure": {
+    "exports": ["./ui/panels"],
+    "modules": ["src/ui/panelDisclosure.js"],
+    "external": []
   }
 }
