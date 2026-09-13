@@ -124,7 +124,11 @@
   "gbfs-provider": {
     "runtime": "node",
     "exports": ["./server/providers/gbfs"],
-    "modules": ["server/providers/gbfs.js", "src/data/gbfsSource.js"],
+    "modules": [
+      "server/providers/gbfs.js",
+      "server/providers/common/http.js",
+      "src/data/gbfsSource.js"
+    ],
     "external": []
   },
   "gbfs-source": {
@@ -247,6 +251,110 @@
       "server/standalone/key-setup.js",
       "src/keySetupCore.mjs",
       "src/keySetupHardening.mjs"
+    ],
+    "external": []
+  },
+  "place-search": {
+    "exports": ["./search"],
+    "modules": [
+      "src/search/index.js",
+      "src/search/placeSearch.js",
+      "src/search/google.js",
+      "src/keylessGeocoder.js"
+    ],
+    "external": []
+  },
+  "panel-disclosure": {
+    "exports": ["./ui/panels"],
+    "modules": ["src/ui/panelDisclosure.js"],
+    "external": []
+  },
+  "surface-keyboard": {
+    "exports": ["./ui/surfaces"],
+    "modules": ["src/ui/surfaceKeyboard.js"],
+    "external": []
+  },
+  "panel-rail-layout": {
+    "exports": ["./ui/layout"],
+    "modules": [
+      "src/ui/panelRails.js",
+      "src/ui/leftPanelRail.js",
+      "src/ui/rightPanelRail.js",
+      "src/ui/panelMeasurement.js",
+      "src/ui/panelRailGeometry.js",
+      "src/panelStackLayout.js"
+    ],
+    "external": []
+  },
+  "visual-input": {
+    "exports": ["./ui/input"],
+    "modules": [
+      "src/ui/visualInput.js",
+      "src/ui/applicationShortcuts.js",
+      "src/ui/styleParameters.js"
+    ],
+    "external": []
+  },
+  "display-controls": {
+    "exports": ["./ui/display"],
+    "modules": ["src/ui/displayControls.js"],
+    "external": []
+  },
+  "visual-effects": {
+    "exports": ["./ui/effects", "./ui/effects/bloom"],
+    "modules": [
+      "src/ui/effects.js",
+      "src/ui/visualEffects.js",
+      "src/ui/visualPresets.js",
+      "src/bloom.js",
+      "src/styles/retro.js",
+      "src/styles/surveillance.js",
+      "src/styles/thermal.js",
+      "src/styles/anime.js",
+      "src/styles/noir.js",
+      "src/styles/snow.js"
+    ],
+    "external": ["cesium"]
+  },
+  "map-source-controls": {
+    "exports": ["./ui/maps"],
+    "modules": [
+      "src/ui/mapSource.js",
+      "src/ui/mapSourceControls.js",
+      "src/mapStackChips.js",
+      "src/keySetupCore.mjs"
+    ],
+    "external": []
+  },
+  "layer-panel": {
+    "exports": ["./ui/layers", "./ui/layers/feedback"],
+    "modules": [
+      "src/ui/layers.js",
+      "src/ui/layerPanel.js",
+      "src/ui/clearLayersControl.js",
+      "src/loadingFeedback.js",
+      "src/data/installationFeedback.js"
+    ],
+    "external": []
+  },
+  "location-controls": {
+    "exports": ["./ui/location"],
+    "modules": [
+      "src/ui/location.js",
+      "src/ui/locationControls.js",
+      "src/ui/locationSearch.js",
+      "src/locationStatus.js"
+    ],
+    "external": []
+  },
+  "radio-controls": {
+    "exports": ["./ui/radio"],
+    "modules": [
+      "src/ui/radio.js",
+      "src/ui/radioControls.js",
+      "src/ui/radioBindings.js",
+      "src/ui/radioPresentation.js",
+      "src/ui/radioTunerModel.js"
     ],
     "external": []
   }
