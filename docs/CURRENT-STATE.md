@@ -1,5 +1,141 @@
 # God's Eye View Current State
 
+## Vessel components and sources
+
+`src/data/aisLiveVessels.js` assembles `createVesselLayer` from the
+`./layers/vessels` package entry. The factory owns feed lifecycle, keyed records,
+rendering, selection, trails and cards in separate components. The standalone
+entry supplies its AISStream source, scene services and existing row limits.
+
+Incomplete observations retain missing keyed vessels for at most five minutes
+since their last accepted receipt, within the renderer's row budget (plus the
+existing selected-contact pin). Complete observations keep the existing removal
+policy. Empty or failed observations preserve warm data with the existing feed
+health warning and first-connect grace period. Source timestamps remain source
+timestamps; receipt does not turn an unknown epoch into a fresh update.
+
+A refreshed record keeps its identity while updating its history reference.
+Selection changes, disable and destruction cancel pending trail requests; late
+responses cannot refill a cleared or replacement trail. Heading and course,
+sea-surface placement, click ownership and card selection policy are unchanged.
+
+
+## Military-flight components and aircraft mechanics
+
+`gods-eye-view/layers/military` exports `createMilitaryFlightLayer`. It uses the
+same normalized observation contract as civil flights, with separate military
+classification, styling, model and tracking policy. Each instance owns its
+contacts, history, scratch objects, model loads and cancellation lifetime.
+Applications supply the existing scene services and resolve model asset URLs;
+`src/data/militaryFlights.js` keeps the standalone layer API and adsb.lol source.
+A source may retain a bounded stale-status reason; the standalone cached-feed
+behavior remains unchanged.
+
+`gods-eye-view/aircraft` exports the existing shared classification, icon,
+metadata, motion, altitude, model-anchor, proximity and selection calculations.
+It also exports `createMilitaryRegistry`, an explicitly constructed owner for
+known military identities and active-layer transitions. Its optional background
+poll consumes the optional `getIdentities` capability, falling back to normalized
+positioned records when a source has no identity-only capability. The adsb.lol
+adapter preserves known identities without requiring positions; those entries
+still cannot enter the renderer. Source replacement
+and disposal abort pending work and clear retained identities; construction
+starts no network request. Both standalone aircraft layers use one registry.
+
+## Civil-flight components
+
+`gods-eye-view/layers/flights` exports `createCivilFlightLayer`. Each instance
+owns its contacts, histories, model collections, scratch objects and lifecycle.
+State, ingestion, enrichment, motion/floor interpolation, rendering, tracking and
+queries live in separate files under `src/layers/flights`. The standalone
+`src/data/flights.js` assembles the existing OpenSky source and scene services.
+
+Applications supply the existing floor/snap, geoid, picking, sprite, camera,
+trail, focus, readout, context, aircraft presentation and render services.
+The factory never constructs a second application registry. Configure a source
+before initialization; replacing it while initialized is rejected. Model loads
+use the supplied asset resolver, including the preload path. Enrichment receives
+an abort signal and cannot update a later lifecycle after destruction. Existing
+camera, terrain floor, trail, selection and measured model-size policies remain.
+
+## Browser live-source observations
+
+Flights, Military Flights and AIS Vessels obtain snapshots and optional history
+through `gods-eye-view/sources/live`. The standalone adapters use the existing
+same-origin routes. Aircraft observations distinguish barometric metres from
+WGS84 ellipsoid metres and retain source position/contact epochs; vessel records
+retain separate heading/course and sea-surface datum. History is a best-effort
+addition to the locally accumulated trail, never a promise of complete coverage.
+
+Snapshot coverage, completeness and freshness are separate fields. A partially
+admitted aircraft snapshot retains absent contacts for up to five minutes before
+the usual missed-poll eviction. Unknown snapshot times remain unknown in stats. An invalid nonempty
+snapshot retains the previous display. Empty vessel refreshes retain the existing
+first-connect grace and warm-data behavior. Known source failures have bounded
+messages; arbitrary HTTP response bodies are not surfaced as diagnostics.
+Sources receive cancellation signals and check them after body parsing. The
+layer's existing lifecycle and selection guards continue to reject late work.
+
+
+## State and action outcomes
+
+Share preferences, place lookups and Scene playback expose immutable snapshots
+and disposable subscriptions. Share settings drive URL updates; lookup outcomes
+drive Location labels and busy/error feedback. Superseded or disposed lookups
+cannot publish accepted destinations. Each completion carries its own request
+identity so an older completion cannot clear the current search indicator.
+
+Scene controls consume playback state and editing outcomes from the director.
+Progress updates carry a small playback snapshot and preserve shot-row identity;
+editing outcomes include a copy of the affected scene or shot. Subscriptions
+start with current state, isolate listener failures and stop on disposal.
+`gods-eye-view/scenes` exports the same director used by the standalone app.
+
+## UI shell and component ownership
+
+The standalone entry composes the UI with the application's existing layer,
+terrain, navigation and rendering operations. The shell receives those instances
+and assembles the controls. Panel layout scheduling, position preferences and
+active drags, loading notices, recording presentation and DOM lookup have focused
+owners. Disposal revokes queued presentation and listeners before asynchronous
+Context restoration, cancels an unfinished drag without saving it, restores the
+recording HUD and releases status decoration without replacing accessible text.
+The ordinary control snapshot includes the current 3D model toggle and mode.
+
+`style.css` imports component styles in their original cascade order. Scene,
+share, HUD and layer engines retain their existing behavior and entry points.
+
+## Scene control ownership
+
+Scene controls own creation/deletion prompts, panel listeners, shot rows, playback/recording presentation
+and keyboard cancellation. The director supplies project reads and explicit
+editing/playback actions while retaining persistence, camera and layer sequencing.
+Shot selection updates the highlight without replacing the row, preserving
+native double-click rename. Replacing rows revokes their old listeners. Disposal stops controls immediately;
+late file and failed-action completions cannot update removed presentation.
+
+## Cockpit component ownership
+
+Cockpit presentation is separated from its camera/controller behavior. Existing
+layer, terrain and rendering operations are supplied by composition, retaining
+the same tracked identity, ground acquisition, motion correction and cadence.
+The Display portal owns group anchors, focus/scroll restoration and listeners.
+Superseded portal frames cannot repaint old state or steal focus after disposal;
+retained Cockpit actions cannot restart a disposed controller. Input, subscriptions
+and queued panel work stop before asynchronous layer restoration; final camera
+and portal cleanup follows that restoration.
+
+
+## Context coordination
+
+Context controls own Contacts/Space Missions state, entry and exit transactions,
+layer snapshots and restoration. The application supplies the existing manager,
+installations search and camera/panel actions. Tab listeners and pending
+presentation work stop during disposal; layer restoration retains its existing
+compensation and latest-intent rules. Clear Selected Layers shares this owner,
+so an older restore cannot replay over a newer Clear action.
+
+
 ## Camera panel ownership
 
 CCTV controls receive the existing camera port and explicit application actions.

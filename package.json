@@ -139,6 +139,21 @@
     "./ui/layers/feedback": "./src/loadingFeedback.js",
     "./ui/location": "./src/ui/location.js",
     "./ui/radio": "./src/ui/radio.js",
-    "./ui/cctv": "./src/ui/cctv.js"
+    "./ui/cctv": "./src/ui/cctv.js",
+    "./ui/context": "./src/ui/context.js",
+    "./ui/context/policy": "./src/contextModePolicy.js",
+    "./ui/cockpit": "./src/ui/cockpit.js",
+    "./ui/cockpit/math": "./src/cockpitMath.js",
+    "./ui/cockpit/layout": "./src/cockpitUtilityLayout.js",
+    "./ui/cockpit/vision": "./src/cockpitVisionPolicy.js",
+    "./ui/scenes": "./src/ui/scenes.js",
+    "./ui/shell": "./src/ui/applicationShell.js",
+    "./ui/styles": "./src/ui/styles.js",
+    "./scenes": "./src/scenes/director.js",
+    "./sources/live": "./src/sources/live/index.js",
+    "./layers/flights": "./src/layers/flights/index.js",
+    "./layers/military": "./src/layers/military/index.js",
+    "./aircraft": "./src/layers/aircraft/index.js",
+    "./layers/vessels": "./src/layers/vessels/index.js"
   }
 }
