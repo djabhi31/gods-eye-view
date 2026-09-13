@@ -336,5 +336,15 @@
       "src/data/installationFeedback.js"
     ],
     "external": []
+  },
+  "location-controls": {
+    "exports": ["./ui/location"],
+    "modules": [
+      "src/ui/location.js",
+      "src/ui/locationControls.js",
+      "src/ui/locationSearch.js",
+      "src/locationStatus.js"
+    ],
+    "external": []
   }
 }
