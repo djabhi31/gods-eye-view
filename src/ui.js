@@ -4885,7 +4885,6 @@ export class StyleManager {
 
   /** Wire the independent Radio companion controls. */
   _initRadioPanel() {
-    this._cctvControls?.destroy();
     this._radioControls?.destroy();
     this._radioControls = new RadioControls({
       elements: {
