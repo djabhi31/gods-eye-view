@@ -1,5 +1,21 @@
 # God's Eye View Current State
 
+## UI disposal
+
+UI disposal releases the CCTV subscription, command-dock observer, legacy drag
+resize observer and window resize listener. These remain independent of the
+Location component and are included in whole-UI browser teardown acceptance.
+
+## Radio controls
+
+Radio panel, compact controls and tuner presentation have a dedicated owner.
+It receives playback, layer actions and layout callbacks; station ingestion,
+marker placement, audio playback and camera policy stay with their existing
+owners. Tuner calculations have a pure entry, with existing layer exports
+preserved. Destruction removes listeners and state subscriptions before ending
+tuning; a delayed Enable result cannot reveal or refocus removed controls.
+
+
 ## Location control ownership
 
 City/POI rows, search/reset bindings, location readouts and the orbit indicator

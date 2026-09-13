@@ -346,5 +346,16 @@
       "src/locationStatus.js"
     ],
     "external": []
+  },
+  "radio-controls": {
+    "exports": ["./ui/radio"],
+    "modules": [
+      "src/ui/radio.js",
+      "src/ui/radioControls.js",
+      "src/ui/radioBindings.js",
+      "src/ui/radioPresentation.js",
+      "src/ui/radioTunerModel.js"
+    ],
+    "external": []
   }
 }

@@ -13,6 +13,10 @@ of current runtime behavior, see [`docs/CURRENT-STATE.md`](docs/CURRENT-STATE.md
 
 ## [Unreleased]
 
+- Restore UI observer, resize-listener and CCTV subscription cleanup after Location extraction.
+
+- Extract Radio controls and tuner presentation with explicit actions and complete listener/subscription cleanup.
+
 - Extract Location controls and cancellable search presentation; preserve navigation handoff and prevent delayed POI expansion after closing the row.
 
 - Separate Layers panel presentation and clear-control bindings from layer lifecycle operations; revoke listeners and subscriptions on replacement or teardown.
