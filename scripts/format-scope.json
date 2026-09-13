@@ -119,5 +119,6 @@
   "src/search/placeSearch.js",
   "src/search/google.js",
   "src/keylessGeocoder.js",
-  "src/standalone/placeSearch.js"
+  "src/standalone/placeSearch.js",
+  "src/ui/panelDisclosure.js"
 ]

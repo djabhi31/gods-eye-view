@@ -182,3 +182,16 @@ keyless Photon fallback. The application passes this service to location
 controls, annotation resolution and voice/radio actions. Those consumers retain
 framing, landmark recovery, footprint matching and playback decisions. Existing
 reverse geocoding and nearby/text-search routes remain separate.
+
+## Panel controls
+
+`gods-eye-view/ui/panels` owns collapse-button binding, nearest-panel Escape
+handling, hover delays and delayed content-focus handoff. It accepts existing
+DOM elements and callbacks; importing it creates no browser state. `destroy()`
+removes owned listeners and cancels pending work without changing saved state
+or moving focus. Call it before removing or replacing the controls.
+
+`src/ui.js` retains panel layout, persistence, share restoration and application
+reactions to state changes. Map Source selection and Location draft cleanup are
+provided through callbacks. The component imports no globe, data, application
+or server modules. Package checks and scoped formatting cover this entry.
