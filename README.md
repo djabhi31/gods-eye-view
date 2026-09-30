@@ -125,6 +125,8 @@ Program scripted orbital camera sweeps, altitude fly-bys, and intelligence prese
 
 ## 🛰️ 13 Live Planetary Intelligence Feeds
 
+Nineteen layers and map sources. **Seventeen have a keyless path.** Some offer additional capabilities with a provider key. (🟢 no key · 🟡 free key · 🔴 metered.)
+
 Every layer runs with sub-second reactivity and smart fallback mechanisms:
 
 | Layer | Intelligence Telemetry | Data Source | Access Tier |
@@ -154,6 +156,8 @@ Equipped with the **OpenAI Realtime API**, God's Eye View acts as an autonomous 
 - **Tactical Flight Directives:** Command *"Take me to Dubai International at street level in night vision"* or *"Orbit the Hoover Dam."*
 - **Spoken Vector Whiteboard:** Say *"Draw a flight vector from Tokyo Haneda to San Francisco"* or *"Outline the state of California."*
 
+> ✍️ **Or draw it yourself** — DISPLAY ▸ **Draw**: pick Area, Line or Pin, click the vertices on the real world, double-click to finish, label it. Same whiteboard, same persistence, no microphone needed.
+
 ---
 
 ## 🚀 Cloud Edition Architecture
@@ -168,7 +172,7 @@ Designed by **[Abhilash Ghosh](https://github.com/djabhi31)** to deliver a zero-
 │  • WebGL / GLSL Post-Processing Pipeline (FLIR / NVG / CRT / Noir)                     │
 └───────────────────────────┬────────────────────────────────────────▲───────────────────┘
                             │ HTTPS / WSS                            │ HTTP/2 Assets &
-                            │                                        │ GeoJSON Data
+                            │                                        │ Telemetry Data
 ┌───────────────────────────▼────────────────────────────────────────┴───────────────────┐
 │                    MICROSOFT AZURE APP SERVICE / LINUX CONTAINER                       │
 │                                                                                        │
@@ -192,6 +196,7 @@ Designed by **[Abhilash Ghosh](https://github.com/djabhi31)** to deliver a zero-
 3. **Always-On Azure Cloud Infrastructure:** Engineered for zero cold starts on Microsoft Azure App Service with custom CNAME and auto-renewing SSL at **[godseyeview.earthsphere.in](https://godseyeview.earthsphere.in)**.
 4. **EarthSphere Geospatial Pairing:** Serves as the high-fidelity 3D tactical companion to the **[EarthSphere](https://github.com/djabhi31/EarthSphere)** environmental suite.
 5. **Zero-Leak Security Audit:** 100% clean security posture backed by hardened `.gitignore` blocking private keys and certificates.
+6. **Sits on the real ground.** Entity heights are aligned to work with Google 3D tiles, so aircraft park on aprons and cameras stand on street corners instead of floating.
 
 ---
 
