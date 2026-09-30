@@ -736,8 +736,16 @@ export class IntelHUD {
     this._summaryRequest = controller;
     try {
       this.summaryPolicy.onRequest?.();
+      const storedOpenAiKey =
+        typeof localStorage !== 'undefined'
+          ? localStorage.getItem('gev_openai_key')
+          : null;
+      const headers = storedOpenAiKey?.trim()
+        ? { 'x-openai-key': storedOpenAiKey.trim() }
+        : undefined;
       const response = await this.summaryService.summarize(context, {
         signal: controller.signal,
+        headers,
       });
       const data = response.data;
       if (revision !== this._summaryRevision) return;

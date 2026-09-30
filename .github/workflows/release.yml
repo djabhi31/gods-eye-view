@@ -1,0 +1,62 @@
+name: Create GitHub Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Tag name (e.g. v0.2.0-cloud)'
+        required: true
+        default: 'v0.2.0-cloud'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.tag_name || github.ref_name }}
+          name: "God's Eye View (Cloud Edition) ${{ github.event.inputs.tag_name || github.ref_name }}"
+          body: |
+            # 🌐 God's Eye View — Cloud-Native Intelligence Console
+            ### Version ${{ github.event.inputs.tag_name || github.ref_name }}
+
+            Welcome to the official **Cloud Edition** release of **God's Eye View**, engineered by **[Abhilash Ghosh (@djabhi31)](https://github.com/djabhi31)** and based on the revolutionary open-source project by **[Bilawal Sidhu](https://github.com/bilawalsidhu)** and **[Sameh Khamis](https://github.com/samehkhamis)** at **[Halfpixel](https://halfpixel.ai)**.
+
+            ---
+
+            ### 🚀 What's New in This Release:
+
+            - ☁️ **Microsoft Azure Cloud Deployment**: Deployed on Linux Node.js 22 LTS with Always-On architecture, custom DNS CNAME, and automated SSL certificate binding at [godseyeview.earthsphere.in](https://godseyeview.earthsphere.in).
+            - 🖥️ **Production Cloud Server (`server.mjs`)**: High-throughput HTTP/2 static asset streaming, SPA route fallback, and continuous health telemetry at `/api/health`.
+            - 🔐 **Browser-Isolated BYOK (Bring Your Own Key)**: Token storage moved completely into browser `localStorage`, preventing server credential leaks and quota theft in multi-user cloud environments.
+            - 🔄 **Lifetime Automated Upstream Sync Engine**: Integrated daily GitHub Actions sync (`sync-upstream.yml`) pulling the latest upstream commits while safeguarding Cloud Edition modifications.
+            - 🛰️ **13 Real-time Intelligence Feeds**: Integrated live tracking for commercial aircraft, military ADS-B, global maritime shipping, orbital satellites, seismic activity, public CCTV meshes, and thermal wildfires.
+            - 🎙️ **Realtime AI Voice Agent**: Hands-free planetary control and intelligence readouts powered by the OpenAI Realtime API.
+            - 🌐 **EarthSphere Ecosystem Integration**: Seamlessly integrated as the high-fidelity 3D tactical twin for [EarthSphere](https://www.earthsphere.in).
+            - 🛡️ **Zero-Leak Security Audit**: Passed comprehensive regex secret scans and hardened `.gitignore` for private keys.
+
+            ---
+
+            ### 👥 Maintainers & Attribution:
+            - **Original Creator & Visionary**: [Bilawal Sidhu](https://github.com/bilawalsidhu)
+            - **Core Maintainer (Upstream)**: [Sameh Khamis](https://github.com/samehkhamis)
+            - **Cloud Edition Architect & Maintainer**: [Abhilash Ghosh](https://github.com/djabhi31)
+
+            ---
+            *Released under the [MIT License](LICENSE).*
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,18 +1,24 @@
 {
   "name": "gods-eye-view",
   "private": true,
-  "version": "0.1.1",
-  "description": "A real-time intelligence console for planet Earth — photorealistic 3D globe, live aircraft/ships/satellites/earthquakes/CCTV, and hands-free voice control. Runs in a browser.",
+  "version": "0.2.0-cloud",
+  "description": "God's Eye View (Cloud Edition) — Real-time 3D intelligence console for planet Earth. Originally created by Bilawal Sidhu, modified & architected for cloud deployment by Abhilash Ghosh.",
   "type": "module",
   "license": "MIT",
-  "author": "Bilawal Sidhu",
-  "homepage": "https://github.com/bilawalsidhu/gods-eye-view#readme",
+  "author": "Abhilash Ghosh <abhilashghosh31@gmail.com> (https://github.com/djabhi31)",
+  "originalAuthor": "Bilawal Sidhu (https://github.com/bilawalsidhu)",
+  "contributors": [
+    "Bilawal Sidhu (Original Creator & Architecture)",
+    "Sameh Khamis (Core Maintainer)",
+    "Abhilash Ghosh (Cloud Edition Architect, Azure Deployment & BYOK Architecture)"
+  ],
+  "homepage": "https://godseyeview.earthsphere.in",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bilawalsidhu/gods-eye-view.git"
+    "url": "https://github.com/djabhi31/gods-eye-view.git"
   },
   "bugs": {
-    "url": "https://github.com/bilawalsidhu/gods-eye-view/issues"
+    "url": "https://github.com/djabhi31/gods-eye-view/issues"
   },
   "engines": {
     "node": ">=24.14.0 <25 || >=26 <27"
