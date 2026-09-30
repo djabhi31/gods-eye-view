@@ -1,0 +1,11 @@
+﻿node_modules
+.git
+*.log
+screenshots/
+qa-shots/
+output/
+.gev-logs/
+.gev-cache/
+.DS_Store
+.env
+.env.*
