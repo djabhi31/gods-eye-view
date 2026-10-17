@@ -54,7 +54,21 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_73C8AA935F2F49B8A3CE4572D58DB564 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0EF5A5AA5A3D4C5FA97E169ABE58CFF1 }}
 
-      - name: 'Deploy to Azure Web App'
+      - name: 'Deploy to Azure Web App (attempt 1)'
+        id: deploy-to-webapp-attempt-1
+        continue-on-error: true
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'godseyeview'
+          slot-name: 'Production'
+          package: .
+
+      - name: Wait before retrying deployment
+        if: steps.deploy-to-webapp-attempt-1.outcome == 'failure'
+        run: sleep 30
+
+      - name: 'Deploy to Azure Web App (retry)'
+        if: steps.deploy-to-webapp-attempt-1.outcome == 'failure'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
